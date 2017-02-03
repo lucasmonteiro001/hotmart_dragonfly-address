@@ -4,30 +4,16 @@
         {{> loading}}
     {{else}}
 
-        {{#if authenticated}}
-            {{#unless redirectAuthenticated}}
+        {{> header}}
 
-                {{> header}}
+        <div class="ts-main-content">
 
-                <div class="ts-main-content">
+            {{> Template.dynamic template=yield}}
 
-                    <!--<div class="content-wrapper">-->
-                        <!--<div class="container-fluid">-->
+        </div>
 
-                            {{> Template.dynamic template=yield}}
+        {{> footer}}
 
-                        <!--</div>-->
-                    <!--</div>-->
-                </div>
-
-                {{> footer}}
-
-            {{/unless}}
-        {{else}}
-            {{#unless redirectPublic}}
-                {{> Template.dynamic template=yield}}
-            {{/unless}}
-        {{/if}}
     {{/if}}
 
 </template>

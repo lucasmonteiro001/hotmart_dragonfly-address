@@ -13,16 +13,8 @@ const blockUnauthorizedAdmin = ( context, redirect ) => {
 
 };
 
-const authenticatedRedirect = ( context, redirect ) => {
-    if ( !Meteor.userId() ) {
-        Bert.alert('Você deve estar autenticado para acessar este recurso!', 'danger');
-        redirect('login');
-    }
-};
-
 const authenticatedRoutes = FlowRouter.group({
     name: 'authenticated',
-    triggersEnter: [ authenticatedRedirect ]
 });
 
 authenticatedRoutes.route( '/', {
