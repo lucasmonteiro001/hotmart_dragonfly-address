@@ -2,7 +2,7 @@
   "name": "desafio-hotmart-dragonfly",
   "private": true,
   "config": {
-    "port": 4000
+    "port": 3000
   },
   "scripts": {
     "setEnv": "export BASE_ADDRESS_API=$npm_package_config_baseAddressAPI",
