@@ -1,0 +1,11 @@
+<template name="breadcrumb">
+    <div class="row">
+        <div class="col-xs-12">
+            <ol class="breadcrumb not-printable">
+                {{#each Breadcrumb}}
+                    <li class="{{cssClasses}}"><a href="{{pathFor url}}{{#if param1}}/{{param1}}{{/if}}">{{title}}</a></li>
+                {{/each}}
+            </ol>
+        </div>
+    </div>
+</template>

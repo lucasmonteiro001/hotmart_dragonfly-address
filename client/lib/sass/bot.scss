@@ -1,0 +1,102 @@
+.bot {
+
+    font-family:Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+    font-size:13px;
+    background-color:#428BCA;
+    text-align:center;
+
+  th {
+    color:#FFF;
+    text-align: center;
+  }
+
+  td {
+
+    color:#444;
+    border: 1px solid white;
+    height: 500px;
+    position: relative;;
+  }
+
+  .chat {
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 10px;
+    left: 1%;
+    width: 98%;
+    height: inherit;
+    max-height: 30px;
+  }
+
+  input[type="text"] {
+    position: absolute;
+    left: 0%;
+    width: 100%;
+    line-height: 30px;
+    max-height: inherit;
+  }
+
+  .result {
+    position: absolute;
+    top: 0px;
+    background-color: white;
+    left: 1%;
+    width: 98%;
+    height: 90%;
+    line-height: 100%;
+    overflow-y:auto;
+    overflow-x: hidden;
+    padding-top: 10px;
+  }
+
+  p.server {
+    text-align: left;
+    margin-left: 5px;
+    margin-right: 5px;
+    line-height: 100%;
+    width: fit-content;
+    height: fit-content;
+  }
+
+  p.server span{
+    display: block;
+    white-space: pre-line;
+    border-radius: 0px 20px 5px 5px !important;
+  }
+
+  p.client {
+    text-align: right;
+    margin-left: 30%;
+  }
+
+  p.client span{
+    /*background-color: #F1F1F1;*/
+    padding: 0.5em;
+    margin-right: 15px;
+    text-align: right;
+    display: block;
+    word-wrap: break-word;
+  }
+
+  .error {
+    color:red;
+  }
+
+  .mainTitle {
+    color: white;
+  }
+
+  .logo {
+    height:60px;
+    width: 60px;
+  }
+
+
+  .visualization {
+    width:100%;
+    height:100%;
+    background-color: #F7F6F5;
+
+
+  }
+}

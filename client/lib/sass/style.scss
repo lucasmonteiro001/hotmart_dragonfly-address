@@ -1,0 +1,73 @@
+.container-dataviz {
+    margin: 0 auto;
+    width: 640px;
+    height: 480px;
+}
+
+tr {
+    text-align: center;
+}
+tr.error {
+    outline: 0.5px solid red;
+}
+
+.cssRow {
+    float: left;
+    padding: 3px;
+    background-color: #e0eaf3;
+    border-radius: 100%;
+    width: 2em;
+    height: 2em;
+    font-weight: 600;
+}
+
+rect { shape-rendering: crispEdges; }
+
+.x.axis line {
+    stroke: #FFF;
+    stroke-opacity: .8;
+    stroke-width: 1.5px;
+    shape-rendering: crispEdges;
+}
+
+.arc  {
+    stroke: #FFFFFF;
+    stroke-width: 1px;
+}
+
+.label-pie-chart {
+    stroke: none;
+    font: 18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-anchor: middle;
+    fill: #404040;
+    text-shadow: 0 1px 0 #f4f4f4, 1px 0 0 #f4f4f4, -1px 0 0 #f4f4f4, 0 -1px 0 #f4f4f4;
+}
+
+.axis path {
+    fill: none;
+    stroke: none;
+}
+
+.x.axis.tick:first-child > line {
+    fill: red;
+}
+
+.x.axis text {
+    fill: #4F4F4F;
+    font-size: 14px;
+    font-family: "Georgia", serif;
+}
+
+
+.y.axis text {
+    fill: #4F4F4F;
+    font-size: 12px;
+    font-family: "Open Sans", Helvetica, sans-serif;
+    text-rendering: optmizelegibility;
+}
+
+.exit { fill: #CCCCCC; }
+
+div.cols > div {
+    display: inline-block;
+}

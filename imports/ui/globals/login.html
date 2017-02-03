@@ -1,0 +1,75 @@
+<template name="login">
+    <style>
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        body {
+            /* Margin bottom by footer height */
+            margin-bottom: 60px;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            margin-top: 30px;
+            width: 100%;
+            /* Set the fixed height of the footer here */
+            height: 60px;
+            background-color: #f5f5f5;
+        }
+        .container .text-muted {
+            margin: 20px 0;
+        }
+    </style>
+
+    <div class="login-page">
+        <div class="form-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <h2 class="text-center">Welcome to Data Visualization Bot</h2>
+                        <h2 class="text-center">
+                            <img style="width: 40px; margin-bottom: 6px;" src="/img/boticon.png" alt="icon"> DavBot</h2>
+                        <br/>
+                        <!--<div class="row">-->
+                            <!--<img class="logo-pagina-login" src="/img/logo-geoline.png" alt="logo da empresa">-->
+                        <!--</div>-->
+                        <div class="well row pt-2x pb-3x bk-light">
+                            <div class="col-md-8 col-md-offset-2">
+                                <form action="" class="mt">
+
+                                    <label for="" class="text-uppercase text-sm">Email</label>
+                                    <input id="email" type="email" placeholder="Email" class="form-control mb">
+                                    <br/>
+                                    <label for="" class="text-uppercase text-sm">Password</label>
+                                    <input id="password" type="password" placeholder="Password " class="form-control mb">
+                                    <br/>
+                                    <button class="btn btn-primary btn-block" type="submit">Login</button>
+                                    <button id="lognow" class="btn btn-success btn-block">Login without credentials</button>
+
+                                    <br/>
+                                    <!--<a href="#" class="text-light small pull-right">Forgor your password?</a>-->
+                                    <!--<br/>-->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="container">
+                    <p class="text-muted">
+                        <span class="pull-left">Copyright © 2016. DavBot. All rights reserved.</span>
+                <span class="pull-right">Developed by
+                <a href="https://www.linkedin.com/in/lucas-pereira-monteiro">lucasmonteiro</a>
+                    </span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</template>

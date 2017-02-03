@@ -1,0 +1,102 @@
+<template name="dashboard">
+
+    {{#if Template.subscriptionsReady}}
+        <div class="row">
+            <div class="col-md-12">
+
+                <h2 class="page-title">Dashboard</h2>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+                                    <div class="panel-body bk-primary text-light">
+                                        <div class="stat-panel text-center">
+                                            <div class="stat-panel-number h1 ">{{numUsuarios}}</div>
+                                            <div class="stat-panel-title text-uppercase">Usuários</div>
+                                        </div>
+                                    </div>
+                                    <!--<a href='{{pathFor "usuarios"}}' class="block-anchor panel-footer">Mais detalhes <i class="fa fa-arrow-right"></i></a>-->
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+                                    <div class="panel-body bk-success text-light">
+                                        <div class="stat-panel text-center">
+                                            <div class="stat-panel-number h1 ">{{numPesquisasAbertas}}</div>
+                                            <div class="stat-panel-title text-uppercase">Pesquisas abertas</div>
+                                        </div>
+                                    </div>
+                                    <!--<a href="#" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>-->
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+                                    <div class="panel-body bk-info text-light">
+                                        <div class="stat-panel text-center">
+                                            <div class="stat-panel-number h1 ">{{numEntrevistasRealizadas}}</div>
+                                            <div class="stat-panel-title text-uppercase">Entrevistas realizadas</div>
+                                        </div>
+                                    </div>
+                                    <!--<a href="#" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>-->
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+                                    <div class="panel-body bk-warning text-light">
+                                        <div class="stat-panel text-center">
+                                            <div class="stat-panel-number h1 ">{{numEntrevistasRecusadas}}</div>
+                                            <div class="stat-panel-title text-uppercase">Entrevistas recusadas</div>
+                                        </div>
+                                    </div>
+                                    <!--<a href="#" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Número de entrevistas por entrevistador ({{numEntrevistasRealizadas}})</div>
+                            <div class="panel-body">
+                                <div class="chart">
+                                    {{> charts isGraficoCarregando=isGraficoCarregando}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Entrevistas realizadas nos últimos 10 dias ({{numEntrevistasRealizadasUltimos10dias}})</div>
+                            <div class="panel-body">
+                                {{> chartsTempo isGraficoCarregando=isGraficoCarregando}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{else}}
+        {{> loading}}
+    {{/if}}
+
+</template>
+
+<template name="charts">
+    {{#if isGraficoCarregando}}
+        {{>loading}}
+    {{else}}
+        <div id="chart_div"></div>
+    {{/if}}
+</template>
+
+<template name="chartsTempo">
+    {{#if isGraficoCarregando}}
+        {{>loading}}
+    {{else}}
+        <div id="chart_tempo"></div>
+    {{/if}}
+</template>

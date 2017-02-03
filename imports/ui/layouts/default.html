@@ -1,0 +1,33 @@
+<template name="default">
+
+    {{#if loggingIn}}
+        {{> loading}}
+    {{else}}
+
+        {{#if authenticated}}
+            {{#unless redirectAuthenticated}}
+
+                {{> header}}
+
+                <div class="ts-main-content">
+
+                    <!--<div class="content-wrapper">-->
+                        <!--<div class="container-fluid">-->
+
+                            {{> Template.dynamic template=yield}}
+
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+
+                {{> footer}}
+
+            {{/unless}}
+        {{else}}
+            {{#unless redirectPublic}}
+                {{> Template.dynamic template=yield}}
+            {{/unless}}
+        {{/if}}
+    {{/if}}
+
+</template>

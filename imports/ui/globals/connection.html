@@ -1,0 +1,30 @@
+<template name="connection">
+    <style>
+        .online {
+            color: red;
+        }
+        .offline {
+            color: gray;
+        }
+        .statusRow {
+            text-align: right;
+            display: block;
+        }
+        .statusRow > #connect {
+            padding: 10px;
+            font-size: large;
+            background: #ececec;
+            border-radius: 100px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+        .statusRow > #connect:hover {
+            cursor: pointer;
+        }
+    </style>
+    <div class="row statusRow">
+        <!--<button type="button" class="btn btn-success" id="connect">Connect</button>-->
+        <!--<button type="button" class="btn btn-danger" id="disconnect">Disconnect</button>-->
+        Client connection status: <b>{{status}}</b><i id="connect" class="fa fa-power-off" aria-hidden="true"></i>
+    </div>
+</template>
