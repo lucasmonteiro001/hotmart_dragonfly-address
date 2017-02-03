@@ -2,10 +2,11 @@
   "name": "desafio-hotmart-dragonfly",
   "private": true,
   "config": {
-    "port": 3000
+    "port": 4000
   },
   "scripts": {
-    "start": "npm install && meteor run"
+    "setEnv": "export BASE_ADDRESS_API=$npm_package_config_baseAddressAPI",
+    "start": "npm install && node env && meteor run --port $npm_package_config_port"
   },
   "license": "MIT",
   "author": {
@@ -27,7 +28,6 @@
     "fuzzyset.js": "0.0.1",
     "jquery-ui": "^1.12.1",
     "lodash": "^4.16.2",
-    "meteor-node-stubs": "^0.2.3",
-    "cross-env": "^3.1.4"
+    "meteor-node-stubs": "^0.2.3"
   }
 }
