@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import '../public/dragonfly-address/add'
+import '../public/dragonfly-address/settings'
 import './header.html';
 import Notification from '../../api/common/notification';
 import { Session } from 'meteor/session';
@@ -35,6 +36,9 @@ Template.header.onRendered(() => {
 Template.header.events({
     'click #addAddress': () => {
         Modal.show('dragonfly_address_add');
+    },
+    'click #settings': () => {
+        Modal.show('dragonfly_settings');
     },
     'click #listAddress': () => {
 

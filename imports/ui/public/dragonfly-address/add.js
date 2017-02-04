@@ -114,6 +114,10 @@ Template.dragonfly_address_add.events({
 
             Notification.success('Endereço salvo com sucesso!');
             Modal.hide();
+
+            setTimeout(() => {
+                Notification.info('Para visualizar o novo endereço criado, clique em Obter endereços novamente!');
+            }, 2000);
         });
     }
 });
