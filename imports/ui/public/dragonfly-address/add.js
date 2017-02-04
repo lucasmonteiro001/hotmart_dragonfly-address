@@ -2,6 +2,7 @@
  * Created by lucas on 2/4/17.
  */
 import './add.html';
+import { HTTP } from 'meteor/http';
 import Notification from '../../../api/common/notification';
 import { showLoading } from '../../../api/common/functions';
 
@@ -82,6 +83,37 @@ Template.dragonfly_address_add.helpers({
 });
 
 Template.dragonfly_address_add.events({
+    'focusout #zipCode': () => {
+
+        let cep = $('#zipCode').val();
+
+        let url = 'https://viacep.com.br/ws/' + cep + '/json/';
+
+        if(cep.length === 8) {
+
+            HTTP.get(url, {}, (err, response) => {
+
+                if(err) {
+                    return;
+                }
+
+                if(!response.data.erro) {
+
+                    let {data: {logradouro, bairro, localidade, uf, complemento}} = response;
+
+                    $('#address').val(logradouro);
+                    $('#complement').val(complemento);
+                    $('#state').val(uf);
+                    $('#neighborhood').val(bairro);
+                    $('#city').val(localidade);
+                    $('#country').val('Brasil');
+                }
+            });
+
+            return false;
+        }
+
+    },
     'submit form': (event) => {
         event.preventDefault();
 
