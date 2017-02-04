@@ -1,3 +1,2 @@
-import './authenticated.js';
+import './routes.js';
 import './configure.js';
-import './public.js';
