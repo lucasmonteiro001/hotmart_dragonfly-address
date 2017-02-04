@@ -38,11 +38,13 @@
                                 {{#if isLoggedIn}}
                                     <button id="addAddress"
                                             class="btn btn-success"
-                                            data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Salvando">Salvar</button>
+                                            style="margin-top: 8px"
+                                            data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Salvando">Adicionar novo endereço</button>
                                 {{/if}}
                                 {{#unless isLoggedIn}}
                                     <button id="login"
-                                            class="btn btn-success"
+                                            class="btn btn-default"
+                                            style="margin-top: 8px"
                                             data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Realizando login">Login</button>
                                 {{/unless}}
                             </li>

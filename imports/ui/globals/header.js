@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-import {st_login, st_login_values} from '../../api/common/reactive-data';
+import '../public/dragonfly-address/add'
 import './header.html';
 import Notification from '../../api/common/notification';
 import { Session } from 'meteor/session';
@@ -29,6 +29,9 @@ Template.header.onRendered(() => {
 });
 
 Template.header.events({
+    'click #addAddress': () => {
+        Modal.show('dragonfly_address_add');
+    },
     'click #login': () => {
 
         let $button = $('#login');
@@ -44,7 +47,7 @@ Template.header.events({
             }
 
             Notification.success('Autenticado com sucesso!');
-            Session.set('bearer', true);
+            Session.set('bearer', access_token);
 
         });
 
