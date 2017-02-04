@@ -2,11 +2,51 @@
     {{#if isEmpty}}
         Nenhum dado disponível no momento. Fazer Obter Endereços.
     {{else}}
-        {{#each addresses}}
-            {{label}} <a href="#" name="removeAddress"><i class="fa fa-times" aria-hidden="true" style="color: red"></i></a>
-            <br>
-        {{/each}}
-        <hr>
-        <a id="prevRow" href="#">anterior</a> - {{footerText}} - <a id="nextRow" href="#">próximo</a> | Mostrando de {{firstLineViewPostion}} a {{lastLineViewPostion}} de um total de {{size}}
+        <div class="col-md-10 col-md-offset-1">
+
+            <div class="panel panel-default panel-table">
+                <div class="panel-body">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th><em class="fa fa-cog"></em></th>
+                            <th>Nome</th>
+                            <th>Endereço</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {{#each addresses}}
+                                <tr>
+                                    <td align="center">
+                                        <a class="btn btn-default btn-sm"><em class="fa fa-pencil"></em></a>
+                                        <a class="btn btn-danger btn-sm" name="removeAddress"><em class="fa fa-trash"></em></a>
+                                    </td>
+                                    <td>{{label}}</td>
+                                    <td>{{address}}</td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col col-xs-8"> {{footerText}} |  Mostrando de {{firstLineViewPostion}} a {{lastLineViewPostion}} de um total de {{size}}
+                        </div>
+                        <div class="col col-xs-4">
+                            <ul class="pagination hidden-xs pull-right">
+                                <li><a id="prevRow" href="#">« Anterior</a></li>
+                                <li><a id="nextRow" href="#">Próximo »</a></li>
+                            </ul>
+                            <ul class="pagination visible-xs pull-right">
+                                <li><a id="prevRow" href="#">«</a></li>
+                                <li><a id="nextRow" href="#">»</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     {{/if}}
 </template>
