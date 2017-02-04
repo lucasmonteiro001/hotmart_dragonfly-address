@@ -1,0 +1,9 @@
+<template name="dragonfly_address_list">
+    {{#if isEmpty}}
+        Nenhum dado disponível no momento. Fazer Obter Endereços.
+    {{else}}
+        {{#each addresses}}
+            {{label}}<br>
+        {{/each}}
+    {{/if}}
+</template>

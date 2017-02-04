@@ -41,5 +41,23 @@ Meteor.methods({
             throw new Meteor.Error(statusCode, Status.get(statusCode).reason, Status.get(statusCode).details);
         }
     },
+    'dragonfly-find'({access_token, id = null, page = 1, rows = 20}) {
+
+        try {
+            let response = HTTP.call('get', API.findAll(page, rows), {headers: {Authorization: `Bearer ${access_token}`}})
+
+            let {page, size, data} = response.data;
+
+            return {page, size, addresses: data};
+
+        } catch ( {response: {statusCode}} ) {
+
+            console.log(error);
+
+            let {response: {statusCode}} = error;
+
+            throw new Meteor.Error(statusCode, Status.get(statusCode).reason, Status.get(statusCode).details);
+        }
+    }
 
 });
