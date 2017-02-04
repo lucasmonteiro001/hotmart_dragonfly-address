@@ -16,7 +16,9 @@ const formOptions = {
     "zipCode": {
         label: 'CEP',
         type: 'text',
-        id: 'zipCode'
+        id: 'zipCode',
+        pattern: '[1-9]{8}',
+        title: 'CEP só pode conter números'
     },
     "address": {
         label: 'Endereço',
