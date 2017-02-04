@@ -70,6 +70,8 @@ Template.header.events({
 
             $button.button('reset');
 
+            Notification.success('Endereços obtidos com sucesso!');
+
         });
 
     },
