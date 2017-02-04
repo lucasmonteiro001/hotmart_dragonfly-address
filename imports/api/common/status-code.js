@@ -25,6 +25,10 @@ const status = {
     500: {
         detail: 'Server Error - When an internal server error occur',
         reason: 'Erro interno!'
+    },
+    1000: {
+        detail: 'CEP inválido!',
+        reason: 'CEP inválido!'
     }
 };
 

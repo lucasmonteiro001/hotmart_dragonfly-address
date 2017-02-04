@@ -53,19 +53,7 @@ const formOptions = {
         type: 'text',
         id: 'country',
         required: true
-    },
-    "latitude": {
-        label: 'Latitude',
-        type: 'number',
-        id: 'latitude',
-        required: true
-    },
-    "longitude": {
-        label: 'Longitude',
-        type: 'number',
-        id: 'longitude',
-        required: true
-    },
+    }
 };
 
 Template.dragonfly_address_add.helpers({
@@ -116,9 +104,6 @@ Template.dragonfly_address_add.events({
     },
     'submit form': (event) => {
         event.preventDefault();
-
-        alert('OBTER LATITUDE E LONGITUDE AUTOMATICAMENTE')
-
 
         let $saveButton = $('#adicionarEndereco');
 
