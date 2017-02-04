@@ -10,7 +10,7 @@ Template.header.onRendered(() => {
     Session.set('bearer', false);
 
     // TODO REMOVER
-    //Session.set('bearer', '00984c7a-4883-4d51-a103-bbf9bc9861a2');
+    Session.set('bearer', '00984c7a-4883-4d51-a103-bbf9bc9861a2');
 });
 
 Template.header.helpers({
@@ -46,8 +46,8 @@ Template.header.events({
 
         $button.button('loading');
 
-        let rows = 10,
-            page = 1;
+        let rows = Rows.get() || 1,
+            page = Page.get() || 10;
 
         Meteor.call('dragonfly-find', {access_token: Session.get('bearer'), page, rows}, (err, {page, size, addresses}) => {
 

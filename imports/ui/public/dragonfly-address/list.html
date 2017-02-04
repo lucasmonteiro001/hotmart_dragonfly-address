@@ -3,9 +3,10 @@
         Nenhum dado disponível no momento. Fazer Obter Endereços.
     {{else}}
         {{#each addresses}}
-            {{label}}<br>
+            {{label}} <a href="#" name="removeAddress"><i class="fa fa-times" aria-hidden="true" style="color: red"></i></a>
+            <br>
         {{/each}}
         <hr>
-        <a id="prevRow" href="#">anterior</a> - {{footerText}} - <a id="nextRow" href="#">próximo</a>
+        <a id="prevRow" href="#">anterior</a> - {{footerText}} - <a id="nextRow" href="#">próximo</a> | Mostrando de {{firstLineViewPostion}} a {{lastLineViewPostion}} de um total de {{size}}
     {{/if}}
 </template>

@@ -62,6 +62,24 @@ Meteor.methods({
 
             throw new Meteor.Error(statusCode, Status.get(statusCode).reason, Status.get(statusCode).details);
         }
+    },
+    'dragonfly-remove'({access_token, id}) {
+
+        let formData = { id };
+
+        try {
+            let response = HTTP.call('DELETE', API.delete(id), {data: formData, headers: {Authorization: `Bearer ${access_token}`}})
+
+            return response;
+
+        } catch ( {response: {statusCode, content}} ) {
+
+            console.log(error);
+
+            let {response: {statusCode}} = error;
+
+            throw new Meteor.Error(statusCode, Status.get(statusCode).reason, Status.get(statusCode).details);
+        }
     }
 
 });

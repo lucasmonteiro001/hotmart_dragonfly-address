@@ -15,6 +15,12 @@ Template.dragonfly_address_list.helpers({
     'size': () => {
         return Size.get();
     },
+    'firstLineViewPostion': () => {
+        return 1 + ((Page.get() - 1) * Rows.get());
+    },
+    'lastLineViewPostion': () => {
+        return ((Page.get() - 1) * Rows.get()) + Addresses.get().length;
+    },
     'page': () => {
         return Page.get();
     },
@@ -29,11 +35,54 @@ Template.dragonfly_address_list.helpers({
 
         let totalNumberPages = Math.ceil(size / rows);
 
-        return `${page} de ${totalNumberPages}`;
+        return `Página ${page} de ${totalNumberPages}`;
     }
 });
 
 Template.dragonfly_address_list.events({
+    'click [name=removeAddress]': function (event) {
+
+        let result = confirm('Deseja mesmo remover este endereço da base de dados?');
+
+        if(result) {
+
+            Meteor.call('dragonfly-remove',  {access_token: Session.get('bearer'), id: this.id}, (err, result) => {
+
+                if(err) {
+                    Notification.danger(err.reason);
+
+                    // set addresses found to empty array
+                    Addresses.set([]);
+                    Page.set(1);
+                    Size.set(0);
+                    return;
+                }
+
+                // reload data
+                Meteor.call('dragonfly-find', {access_token: Session.get('bearer'), page: Page.get(), rows: Rows.get()}, (err, {page, size, addresses}) => {
+
+                    if(err) {
+                        Notification.danger(err.reason);
+
+                        // set addresses found to empty array
+                        Addresses.set([]);
+                        Page.set(1);
+                        Size.set(0);
+
+                        return;
+                    }
+
+                    Addresses.set(addresses);
+                    Page.set(page);
+                    Size.set(size);
+
+                    Notification.success('Endereços obtidos com sucesso!');
+                });
+
+            });
+        }
+        console.log(this);
+    },
     'click #nextRow': () => {
 
         let size = Size.get(),
