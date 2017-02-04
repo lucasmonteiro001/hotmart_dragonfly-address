@@ -7,11 +7,9 @@ import { Addresses, Page, Size, Rows } from '../../api/common/reactive-data';
 
 Template.header.onRendered(() => {
     Session.set('bearer', false);
-    Session.set('dragonfly-size', 0);
-    Session.set('dragonfly-page', 0);
 
     // TODO REMOVER
-    Session.set('bearer', '00984c7a-4883-4d51-a103-bbf9bc9861a2');
+    //Session.set('bearer', '00984c7a-4883-4d51-a103-bbf9bc9861a2');
 });
 
 Template.header.helpers({
@@ -40,8 +38,12 @@ Template.header.events({
     },
     'click #listAddress': () => {
 
-        let rows = Rows.get(),
-            page = Page.get();
+        $button = $('#listAddress');
+
+        $button.button('loading');
+
+        let rows = 10,
+            page = 1;
 
         Meteor.call('dragonfly-find', {access_token: Session.get('bearer'), page, rows}, (err, {page, size, addresses}) => {
 
@@ -53,12 +55,16 @@ Template.header.events({
                 Page.set(1);
                 Size.set(0);
 
+                $button.button('reset');
+
                 return;
             }
 
             Addresses.set(addresses);
             Page.set(page);
             Size.set(size);
+
+            $button.button('reset');
 
         });
 

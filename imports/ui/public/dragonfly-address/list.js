@@ -26,11 +26,74 @@ Template.dragonfly_address_list.helpers({
             page = Page.get(),
             rows = Rows.get();
 
-        console.info('footer');
-        console.log(size, page, rows)
-
         let totalNumberPages = Math.ceil(size / rows);
 
         return `${page} de ${totalNumberPages}`;
+    }
+});
+
+Template.dragonfly_address_list.events({
+    'click #nextRow': () => {
+
+        let size = Size.get(),
+            page = Page.get(),
+            rows = Rows.get();
+
+        let totalNumberPages = Math.ceil(size / rows);
+
+        if(page < totalNumberPages) {
+
+            // increase to go to next page
+            page += 1;
+
+            Meteor.call('dragonfly-find', {access_token: Session.get('bearer'), page, rows}, (err, {page, size, addresses}) => {
+
+                if(err) {
+                    Notification.danger(err.reason);
+
+                    // set addresses found to empty array
+                    Addresses.set([]);
+                    Page.set(1);
+                    Size.set(0);
+
+                    return;
+                }
+
+                Addresses.set(addresses);
+                Page.set(page);
+                Size.set(size);
+
+            });
+        }
+    },
+    'click #prevRow': () => {
+
+        let page = Page.get(),
+            rows = Rows.get();
+
+        if(page > 0) {
+
+            // decrease go to the previous page
+            page -= 1;
+
+            Meteor.call('dragonfly-find', {access_token: Session.get('bearer'), page, rows}, (err, {page, size, addresses}) => {
+
+                if(err) {
+                    Notification.danger(err.reason);
+
+                    // set addresses found to empty array
+                    Addresses.set([]);
+                    Page.set(1);
+                    Size.set(0);
+
+                    return;
+                }
+
+                Addresses.set(addresses);
+                Page.set(page);
+                Size.set(size);
+
+            });
+        }
     }
 });

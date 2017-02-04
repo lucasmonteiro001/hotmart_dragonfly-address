@@ -43,10 +43,14 @@ Meteor.methods({
     },
     'dragonfly-find'({access_token, id = null, page = 1, rows = 20}) {
 
+        let httpAddress =  API.findAll(page, rows);
+
         try {
-            let response = HTTP.call('get', API.findAll(page, rows), {headers: {Authorization: `Bearer ${access_token}`}})
+            let response = HTTP.call('get', httpAddress, {headers: {Authorization: `Bearer ${access_token}`}})
 
             let {page, size, data} = response.data;
+
+            console.log(size, page);
 
             return {page, size, addresses: data};
 

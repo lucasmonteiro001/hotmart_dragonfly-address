@@ -7,7 +7,7 @@ const API_ADDRESS = process.env.API_ADDRESS;
 const withId = id => `${API_ADDRESS}/${id}`;
 
 const _insert = () => API_ADDRESS;
-const _findAll = (page = 1, rows = 20) => `${API_ADDRESS}?page=${page}&rows=${rows}`;
+const _findAll = (page = 1, rows = 20) => `${API_ADDRESS}?rows=${rows}&page=${page}`;
 const _findOne = id => withId(id);
 const _update = id => withId(id);
 const _delete = id => withId(id);

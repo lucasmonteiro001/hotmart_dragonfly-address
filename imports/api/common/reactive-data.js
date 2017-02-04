@@ -6,8 +6,8 @@
 
 export let Addresses = new ReactiveVar([]);
 export let Size = new ReactiveVar(0);
-export let Page = new ReactiveVar(0);
+export let Page = new ReactiveVar(1);
 
 // default number of Addresses to retrieve
-export let Rows = new ReactiveVar(20);
+export let Rows = new ReactiveVar(10);
 
