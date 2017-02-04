@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+import {st_login, st_login_values} from '../../api/common/reactive_data';
 import './header.html';
 
 Template.header.onCreated(() => {
@@ -6,8 +7,11 @@ Template.header.onCreated(() => {
 });
 
 Template.header.helpers({
-    'email': function () {
-        return Meteor.user().emails[0].address;
+    'loginDefault': () => {
+        return st_login_values.default;
+    },
+    'loginOnChange': () => {
+        return st_login_values.onChange;
     }
 });
 
@@ -17,14 +21,16 @@ Template.header.onRendered(() => {
 });
 
 Template.header.events({
-    'click #logout': () => {
-        Meteor.logout();
-        FlowRouter.go('index')
-    },
-    'click span.sysLang': (evt) => {
+    'click #login': () => {
 
-        evt.preventDefault();
+        let $button = $('#login');
 
-        TAPi18n.setLanguage(evt.target.id);
+        $button.button('loading');
+
+        setTimeout(() => {
+
+            $button.button('reset');
+
+        }, 5000)
     }
 });
