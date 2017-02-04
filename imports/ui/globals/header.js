@@ -6,6 +6,9 @@ import { Session } from 'meteor/session';
 
 Template.header.onRendered(() => {
     Session.set('bearer', false);
+
+    // TODO REMOVER
+    Session.set('bearer', '00984c7a-4883-4d51-a103-bbf9bc9861a2');
 });
 
 Template.header.helpers({
