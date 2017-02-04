@@ -6,6 +6,17 @@ import {HTTP} from 'meteor/http';
 import API from '../common/api-url';
 import Status from '../common/status-code';
 
+const NodeGeocoder = require('node-geocoder');
+
+const options = {
+    provider: 'google',
+    // Optional depending on the providers
+    apiKey: 'AIzaSyDbZ92jru8Fl2FPKPgkl_KV2SH6F6UILd4', // for Mapquest, OpenCage, Google Premier
+};
+
+const geocoder = NodeGeocoder(options);
+
+
 Meteor.methods({
 
     'dragonfly-login'() {
