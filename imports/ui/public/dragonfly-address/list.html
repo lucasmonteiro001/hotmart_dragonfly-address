@@ -11,18 +11,14 @@
                         <tr>
                             <th>Nome</th>
                             <th>Endereço</th>
-                            <th>Latitude</th>
-                            <th>Longitude</th>
                             <th><em class="fa fa-cog"></em></th>
                         </tr>
                         </thead>
                         <tbody>
                             {{#each addresses}}
                                 <tr>
-                                    <td>{{label}}</td>
-                                    <td>{{address}}</td>
-                                    <td>{{latitude}}</td>
-                                    <td>{{longitude}}</td>
+                                    <td class="text-left">{{label}}</td>
+                                    <td class="text-left">{{addressFormater}}</td>
                                     <td align="center">
                                         <a class="btn btn-default btn-sm"><em class="fa fa-pencil"></em></a>
                                         <a class="btn btn-danger btn-sm" name="removeAddress"><em class="fa fa-trash"></em></a>

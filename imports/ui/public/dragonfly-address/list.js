@@ -7,6 +7,20 @@ import Notification from '../../../api/common/notification';
 import { showLoading } from '../../../api/common/functions';
 
 Template.dragonfly_address_list.helpers({
+    'addressFormater':function() {
+
+        let self = this;
+
+        // Return the field only if it exists
+        const add = (field) => self[field] ? self[field] : '';
+
+        const getFields = (fields) => fields.map(field => add(field));
+
+        let fields = getFields(['address', 'number', 'neighborhood', 'city', 'state', 'country'])
+                        .filter(field => field.length > 0);
+
+        return fields.join(', ');
+    },
     'isEmpty': () => {
         return Addresses.get().length === 0;
     },
