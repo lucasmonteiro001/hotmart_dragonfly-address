@@ -78,6 +78,11 @@ Template.dragonfly_address_list.events({
                     return;
                 }
 
+                // if current page is greater than page retrieved from server, go to server sended page
+                if(Page.get() === Size.get()) {
+                    Page.set(Page.get() - 1);
+                }
+
                 // reload data
                 Meteor.call('dragonfly-find', {access_token: Session.get('bearer'), page: Page.get(), rows: Rows.get()}, (err, {page, size, addresses}) => {
 
