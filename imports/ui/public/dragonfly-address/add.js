@@ -3,6 +3,7 @@
  */
 import './add.html';
 import Notification from '../../../api/common/notification';
+import { showLoading } from '../../../api/common/functions';
 
 const formOptions = {
     "label": {
@@ -103,16 +104,25 @@ Template.dragonfly_address_add.events({
             data: formData
         };
 
+        showLoading(true);
+
         Meteor.call('dragonfly-insert', params, (err, res) => {
 
             $saveButton.button('reset');
 
             if(err) {
+
                 Notification.danger(err.reason);
+
+                showLoading(false);
+
                 return;
             }
 
             Notification.success('Endereço salvo com sucesso!');
+
+            showLoading(false);
+
             Modal.hide();
 
             setTimeout(() => {

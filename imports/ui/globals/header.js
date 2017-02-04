@@ -5,6 +5,7 @@ import './header.html';
 import Notification from '../../api/common/notification';
 import { Session } from 'meteor/session';
 import { Addresses, Page, Size, Rows } from '../../api/common/reactive-data';
+import { showLoading } from '../../api/common/functions';
 
 Template.header.onRendered(() => {
     Session.set('bearer', false);
@@ -49,6 +50,8 @@ Template.header.events({
         let rows = Rows.get() || 1,
             page = Page.get() || 10;
 
+        showLoading(true);
+
         Meteor.call('dragonfly-find', {access_token: Session.get('bearer'), page, rows}, (err, {page, size, addresses}) => {
 
             if(err) {
@@ -61,6 +64,8 @@ Template.header.events({
 
                 $button.button('reset');
 
+                showLoading(false);
+
                 return;
             }
 
@@ -72,6 +77,8 @@ Template.header.events({
 
             Notification.success('Endereços obtidos com sucesso!');
 
+            showLoading(false);
+
         });
 
     },
@@ -81,23 +88,31 @@ Template.header.events({
 
         $button.button('loading');
 
+        showLoading(true);
+
         Meteor.call('dragonfly-login', (err, access_token) => {
 
             if(err) {
                 Notification.danger(err.reason);
+
                 Session.set('bearer', false);
+
+                showLoading(false);
+
+                $button.button('reset');
+
                 return;
             }
 
             Notification.success('Autenticado com sucesso!');
+
+            showLoading(false);
+
+            $button.button('reset');
+
             Session.set('bearer', access_token);
 
         });
 
-        setTimeout(() => {
-
-            $button.button('reset');
-
-        }, 2000)
     }
 });

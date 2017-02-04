@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+import { Session } from 'meteor/session';
 import './index.html';
 import '../public/dragonfly-address/list';
 
@@ -7,6 +8,9 @@ Template.index.onRendered( () => {
     console.log("tela de index");
 });
 
-Template.index.events({
-    
+Template.index.helpers({
+
+    'show': () => {
+        return Session.get('showLoading') || false;
+    }
 });

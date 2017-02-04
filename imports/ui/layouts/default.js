@@ -3,7 +3,6 @@
  */
 import './default.html';
 import '../globals/header';
-import '../globals/loading.html';
 import '../globals/connection';
 import '../globals/footer';
 

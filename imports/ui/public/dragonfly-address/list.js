@@ -4,6 +4,7 @@
 import './list.html';
 import {Addresses, Size, Page, Rows} from '../../../api/common/reactive-data';
 import Notification from '../../../api/common/notification';
+import { showLoading } from '../../../api/common/functions';
 
 Template.dragonfly_address_list.helpers({
     'isEmpty': () => {
@@ -46,6 +47,8 @@ Template.dragonfly_address_list.events({
 
         if(result) {
 
+            showLoading(true);
+
             Meteor.call('dragonfly-remove',  {access_token: Session.get('bearer'), id: this.id}, (err, result) => {
 
                 if(err) {
@@ -55,6 +58,9 @@ Template.dragonfly_address_list.events({
                     Addresses.set([]);
                     Page.set(1);
                     Size.set(0);
+
+                    showLoading(false);
+
                     return;
                 }
 
@@ -69,6 +75,8 @@ Template.dragonfly_address_list.events({
                         Page.set(1);
                         Size.set(0);
 
+                        showLoading(false);
+
                         return;
                     }
 
@@ -76,7 +84,9 @@ Template.dragonfly_address_list.events({
                     Page.set(page);
                     Size.set(size);
 
-                    Notification.success('Endereços obtidos com sucesso!');
+                    showLoading(false);
+
+                    Notification.success('Endereço removido com sucesso!');
                 });
 
             });
@@ -93,6 +103,8 @@ Template.dragonfly_address_list.events({
 
         if(page < totalNumberPages) {
 
+            showLoading(true);
+
             // increase to go to next page
             page += 1;
 
@@ -106,12 +118,16 @@ Template.dragonfly_address_list.events({
                     Page.set(1);
                     Size.set(0);
 
+                    showLoading(false);
+
                     return;
                 }
 
                 Addresses.set(addresses);
                 Page.set(page);
                 Size.set(size);
+
+                showLoading(false);
 
             });
         }
@@ -130,6 +146,8 @@ Template.dragonfly_address_list.events({
         }
         else if (page > 1) {
 
+            showLoading(true);
+
             // decrease go to the previous page
             page -= 1;
 
@@ -143,12 +161,16 @@ Template.dragonfly_address_list.events({
                     Page.set(1);
                     Size.set(0);
 
+                    showLoading(false);
+
                     return;
                 }
 
                 Addresses.set(addresses);
                 Page.set(page);
                 Size.set(size);
+
+                showLoading(false);
 
             });
         }
