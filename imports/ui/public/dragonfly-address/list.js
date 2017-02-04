@@ -3,6 +3,7 @@
  */
 import './list.html';
 import {Addresses, Size, Page, Rows} from '../../../api/common/reactive-data';
+import Notification from '../../../api/common/notification';
 
 Template.dragonfly_address_list.helpers({
     'isEmpty': () => {
@@ -65,13 +66,20 @@ Template.dragonfly_address_list.events({
 
             });
         }
+        else {
+            Notification.warning('Não há próxima página!');
+        }
+
     },
     'click #prevRow': () => {
 
         let page = Page.get(),
             rows = Rows.get();
 
-        if(page > 0) {
+        if(page === 1) {
+            Notification.warning('Não há página anterior!');
+        }
+        else if (page > 1) {
 
             // decrease go to the previous page
             page -= 1;
