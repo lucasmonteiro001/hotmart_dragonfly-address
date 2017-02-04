@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import {st_login, st_login_values} from '../../api/common/reactive_data';
 import './header.html';
+import Notification from '../../api/common/notification'
 
 Template.header.onCreated(() => {
 
@@ -27,10 +28,15 @@ Template.header.events({
 
         $button.button('loading');
 
+        Notification.info('Iniciando')
+
         setTimeout(() => {
 
             $button.button('reset');
 
-        }, 5000)
+            Notification.success('Fim')
+
+
+        }, 2000)
     }
 });
