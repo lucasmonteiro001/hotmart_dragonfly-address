@@ -27,6 +27,12 @@ export function getLatLng(data) {
 
     return new Promise((resolve, reject) => {
 
+        // if data is empty, return lat:0, lng:0
+        if(!data || data.length === 0) {
+            resolve({latitude: 0, longitude:0});
+            return;
+        }
+
         geocoder.geocode(data, function(err, res) {
 
             if(err) {
