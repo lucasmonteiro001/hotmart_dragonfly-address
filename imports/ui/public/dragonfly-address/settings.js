@@ -3,10 +3,13 @@
  */
 import './settings.html';
 import { Rows, Page, Addresses, Size } from '../../../api/common/reactive-data';
+import { showLoading } from '../../../api/common/functions';
 
 Template.dragonfly_settings.events({
     'submit form': (event) => {
         event.preventDefault();
+
+        showLoading(true);
 
         $button = $('#updateNumberOfRowsPerPage');
 
@@ -31,6 +34,8 @@ Template.dragonfly_settings.events({
 
                 $button.button('reset');
 
+                showLoading(false);
+
                 Modal.hide();
 
                 return;
@@ -41,6 +46,8 @@ Template.dragonfly_settings.events({
             Size.set(size);
 
             $button.button('reset');
+
+            showLoading(false);
 
             Modal.hide();
 
