@@ -3,7 +3,7 @@ import '../public/dragonfly-address/add'
 import './header.html';
 import Notification from '../../api/common/notification';
 import { Session } from 'meteor/session';
-import { Addresses } from '../../api/common/reactive-data';
+import { Addresses, Page, Size, Rows } from '../../api/common/reactive-data';
 
 Template.header.onRendered(() => {
     Session.set('bearer', false);
@@ -40,21 +40,25 @@ Template.header.events({
     },
     'click #listAddress': () => {
 
-        Meteor.call('dragonfly-find', {access_token: Session.get('bearer')}, (err, {page, size, addresses}) => {
+        let rows = Rows.get(),
+            page = Page.get();
+
+        Meteor.call('dragonfly-find', {access_token: Session.get('bearer'), page, rows}, (err, {page, size, addresses}) => {
 
             if(err) {
                 Notification.danger(err.reason);
 
                 // set addresses found to empty array
                 Addresses.set([]);
+                Page.set(1);
+                Size.set(0);
+
                 return;
             }
 
             Addresses.set(addresses);
-
-            Session.set('dragonfly-size', size);
-
-            Session.set('dragonfly-page', page);
+            Page.set(page);
+            Size.set(size);
 
         });
 
