@@ -35,9 +35,16 @@
                         </a>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="ts-account">
-                                <button id="login"
-                                        class="btn btn-success"
-                                        data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> {{loginOnChange}}">{{loginDefault}}</button>
+                                {{#if isLoggedIn}}
+                                    <button id="addAddress"
+                                            class="btn btn-success"
+                                            data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Salvando">Salvar</button>
+                                {{/if}}
+                                {{#unless isLoggedIn}}
+                                    <button id="login"
+                                            class="btn btn-success"
+                                            data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Realizando login">Login</button>
+                                {{/unless}}
                             </li>
                         </ul>
                     </div><!--/.nav-collapse -->

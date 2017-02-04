@@ -1,18 +1,25 @@
 import { Template } from 'meteor/templating';
-import {st_login, st_login_values} from '../../api/common/reactive_data';
+import {st_login, st_login_values} from '../../api/common/reactive-data';
 import './header.html';
-import Notification from '../../api/common/notification'
+import Notification from '../../api/common/notification';
+import { Session } from 'meteor/session';
 
-Template.header.onCreated(() => {
-
+Template.header.onRendered(() => {
+    Session.set('bearer', false);
 });
 
 Template.header.helpers({
-    'loginDefault': () => {
-        return st_login_values.default;
-    },
-    'loginOnChange': () => {
-        return st_login_values.onChange;
+    isLoggedIn: () => {
+
+        let isLoggedIn = false;
+
+        try {
+            isLoggedIn = Session.get('bearer');
+        } catch (e) {
+
+        }
+
+        return isLoggedIn;
     }
 });
 
@@ -28,14 +35,22 @@ Template.header.events({
 
         $button.button('loading');
 
-        Notification.info('Iniciando')
+        Meteor.call('dragonfly-login', (err, access_token) => {
+
+            if(err) {
+                Notification.danger(err.reason);
+                Session.set('bearer', false);
+                return;
+            }
+
+            Notification.success('Autenticado com sucesso!');
+            Session.set('bearer', true);
+
+        });
 
         setTimeout(() => {
 
             $button.button('reset');
-
-            Notification.success('Fim')
-
 
         }, 2000)
     }

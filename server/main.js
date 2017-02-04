@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import '/imports/startup/server';
-import Status from '../imports/api/common/status_code'
-import Urls, {insert} from '../imports/api/common/api_url';
+import Status from '../imports/api/common/status-code'
+import Urls, {insert} from '../imports/api/common/api-url';
 
 Meteor.startup(() => {
   // code to run on server at startup
