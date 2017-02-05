@@ -20,8 +20,16 @@
                                     <td class="text-left">{{label}}</td>
                                     <td class="text-left">{{addressFormater}}</td>
                                     <td align="center">
-                                        <a class="btn btn-default btn-sm" name="viewEditAddress"><em class="fa fa-eye"></em></a>
-                                        <a class="btn btn-danger btn-sm" name="removeAddress"><em class="fa fa-trash"></em></a>
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <a class="btn btn-default btn-sm" name="viewEditAddress"><em class="fa fa-eye"></em></a>
+                                            </div>
+                                            <div class="col-xs-6" style="margin-left: -15px">
+                                                <a class="btn btn-danger btn-sm" name="removeAddress"><em class="fa fa-trash"></em></a>
+                                            </div>
+
+
+                                        </div>
                                     </td>
                                 </tr>
                             {{/each}}
