@@ -22,57 +22,95 @@ const BASE_LAYER = L.tileLayer(process.env.BASE_LAYER_URL, {
 
 Template.dragonfly_address_view_edit.onCreated(function () {
 
-    let { data } = this;
+    showLoading(true);
 
-    Template.instance().address = data;
+    let params = {
+        access_token: Session.get('bearer'),
+        id: this.data.id
+    };
 
-    Template.instance().isEditing = new ReactiveVar(false);
+    let template = Template.instance();
+
+    template.address = new ReactiveVar(null);
+    template.isEditing = new ReactiveVar(false);
+
+    Meteor.call('dragonfly-find', params, (err, address) => {
+
+        if(err) {
+
+            Notification.danger(err.reason);
+
+            showLoading(false);
+
+            return;
+        }
+
+        template.address.set(address);
+
+        let {latitude, longitude} = address;
+
+        if(!(latitude && longitude)) {
+            return;
+        }
+
+        setTimeout(() => {
+            let map = MapInstance.get();
+
+            // if map instantiate, remove it first
+            if(map) {
+                map.remove();
+            }
+
+            map = L.map('mapid', {layers: [BASE_LAYER]}).setView([latitude, longitude], 13);
+
+            L.marker([latitude, longitude]).addTo(map);
+
+            MapInstance.set(map);
+        }, 500);
+
+        showLoading(false);
+
+    });
 });
 
 Template.dragonfly_address_view_edit.onRendered(() => {
-
-    let {latitude, longitude} = Template.instance().address;
-
-    if(!(latitude && longitude)) {
-        return;
-    }
-
-    setTimeout(() => {
-        let map = MapInstance.get();
-
-        // if map instantiate, remove it first
-        if(map) {
-            map.remove();
-        }
-
-        map = L.map('mapid', {layers: [BASE_LAYER]}).setView([latitude, longitude], 13);
-
-        L.marker([latitude, longitude]).addTo(map);
-
-        MapInstance.set(map);
-    }, 500);
 
 });
 
 Template.dragonfly_address_view_edit.helpers({
     'hasLatLng': () => {
 
-        let {latitude, longitude} = Template.instance().address;
+        if(!Template.instance().address.get()) {
+            return false;
+        }
+
+        let {latitude, longitude} = Template.instance().address.get();
 
         return !!latitude && !!longitude;
     },
     'isEditing': () => {
+
         return Template.instance().isEditing.get();
     },
     /** @type boolean */
     'unblockEdit': (editPossible) => {
+
         return !(Template.instance().isEditing.get() && editPossible);
     },
     'formOptions':() => {
 
-        setTimeout(DAMApplyMasks, 200);
+        let address = Template.instance().address;
 
-        return DAMGetFormOptions(Template.instance().address);
+        if(address.get()) {
+            console.log(address.get())
+            setTimeout(DAMApplyMasks, 200);
+            return DAMGetFormOptions(address.get());
+        }
+        else {
+            return [];
+        }
+
+
     }
 });
 
@@ -86,7 +124,7 @@ Template.dragonfly_address_view_edit.events({
 
         showLoading(true);
 
-        let formData = DAMGetFilledFormValues(Template.instance().address.id);
+        let formData = DAMGetFilledFormValues(Template.instance().address.get().id);
 
         let params = {
             access_token: Session.get('bearer'),
