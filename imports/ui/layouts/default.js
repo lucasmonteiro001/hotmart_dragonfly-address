@@ -3,21 +3,5 @@
  */
 import './default.html';
 import '../globals/header';
-import '../globals/connection';
 import '../globals/footer';
 
-
-Template.default.events({
-
-});
-
-Template.default.helpers({
-    loggingIn() {
-        return Meteor.loggingIn();
-    }
-});
-
-Template.default.onRendered(() => {
-
-
-})
