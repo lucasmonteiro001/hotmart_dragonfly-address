@@ -15,6 +15,8 @@ Meteor.methods({
         try {
             let {data: {access_token}} = HTTP.call('POST', process.env.API_LOGIN, {headers: {Authorization: process.env.HEADER_AUTHORIZATION}});
 
+            console.info('access_token', access_token);
+
             return access_token;
 
         } catch ( error ) {

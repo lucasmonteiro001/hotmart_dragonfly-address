@@ -6,6 +6,11 @@ import {Addresses, Size, Page, Rows} from '../../../api/common/reactive-data';
 import Notification from '../../../api/common/notification';
 import { showLoading } from '../../../api/common/functions';
 import './view-edit';
+import { Session } from 'meteor/session';
+
+Template.dragonfly_address_list.onRendered(() => {
+
+});
 
 Template.dragonfly_address_list.helpers({
     'addressFormater':function() {
