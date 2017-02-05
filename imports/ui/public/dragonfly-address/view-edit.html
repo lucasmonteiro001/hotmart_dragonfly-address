@@ -16,18 +16,44 @@
                     <div class="row">
                         <form>
                             {{#each formOptions}}
-                                <div class="form-group {{col}}">
-                                    <label for="{{id}}">{{label}}</label>
-                                    <input type="{{type}}"
-                                           value="{{val}}"
-                                           class="form-control"
-                                           id="{{id}}"
-                                           pattern="{{pattern}}"
-                                           title="{{title}}"
-                                           placeholder="{{label}}"
-                                           disabled="{{unblockEdit editPossible}}"
-                                           required="{{required}}">
-                                </div>
+                                {{#if isTypeArray type}}
+                                    <div class="col-xs-12">
+                                        <h3>Checklist</h3>
+                                        {{#each getFieldsArrayIds}}
+                                            {{#with checklistItem=(getFieldArrayIdValues this)}}
+                                                <div class="form-group">
+                                                    <div class="checkbox">
+                                                        <input type="hidden"
+                                                               name="id"
+                                                               value="{{checklistItem.id}}"
+                                                               disabled="{{unblockEdit true}}">
+                                                        <label>
+                                                            <input type="checkbox"
+                                                                   checked="{{checklistItem.available}}"
+                                                                   disabled="{{unblockEdit true}}">
+                                                            <span><b>{{checklistItem.name}}</b></span>
+                                                        </label>
+                                                        <p>{{checklistItem.description}}</p>
+                                                    </div>
+                                                </div>
+                                            {{/with}}
+                                        {{/each}}
+                                    </div>
+                                {{else}}
+                                    <div class="form-group {{col}}">
+                                        <label for="{{id}}">{{label}}</label>
+                                        <input type="{{type}}"
+                                               class="form-control"
+                                               value="{{val}}"
+                                               id="{{id}}"
+                                               pattern="{{pattern}}"
+                                               title="{{title}}"
+                                               placeholder="{{label}}"
+                                               disabled="{{unblockEdit editPossible}}"
+                                               required="{{required}}">
+                                    </div>
+                                {{/if}}
+
                             {{/each}}
 
                             {{#if hasLatLng}}

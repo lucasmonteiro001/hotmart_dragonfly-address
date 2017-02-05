@@ -73,6 +73,39 @@ export const DragonflyAddressModel = {
         col: 'col-xs-4',
         required: true,
         editPossible: false
+    },
+    "checkListItems": {
+        editOnly: true,
+        type: 'ARRAY',
+        editPossible: true,
+        fields: [
+            {
+                id: 'id',
+                label: 15,
+                display: 'hidden'
+            },
+            {
+                id: 'name',
+                label: 'Item',
+                type: 'text'
+            },
+            {
+                id: 'imageUrl',
+                label: 'Imagem',
+                type: 'img'
+            },
+            {
+                id: 'description',
+                label: 'Descrição',
+                type: 'text'
+            },
+            {
+                id: 'available',
+                label: 'Existe?',
+                type: 'bool',
+                editPossible: true
+            }
+        ]
     }
 };
 
@@ -82,7 +115,7 @@ export const DragonflyAddressModel = {
  * @returns {Array}
  * @constructor
  */
-export const DAMGetFormOptions = (baseValues) => {
+export const DAMGetFormOptions = (baseValues, isEdit = false) => {
 
     let options = [];
 
@@ -90,9 +123,22 @@ export const DAMGetFormOptions = (baseValues) => {
 
         let opt = {...DragonflyAddressModel[prop]};
 
-        if(baseValues) {
-            opt.val = baseValues[prop];
+        // if it's an add action
+        if(!isEdit) {
+            // add only if field is not editOnly
+            if(!opt.editOnly) {
+                if(baseValues) {
+                    opt.val = baseValues[prop];
+                }
+            }
         }
+        // if it' edit, show all
+        else {
+            if(baseValues) {
+                opt.val = baseValues[prop];
+            }
+        }
+
 
         options.push(opt);
     }

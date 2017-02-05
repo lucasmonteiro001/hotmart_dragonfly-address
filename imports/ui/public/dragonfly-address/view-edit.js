@@ -88,13 +88,22 @@ Template.dragonfly_address_view_edit.helpers({
 
         return !!latitude && !!longitude;
     },
+    'isTypeArray': (type) => {
+        return type.toLowerCase() === 'array';
+    },
+    'getFieldsArrayIds': () => {
+        return Template.instance().address.get().checklistItems.map(f => f.id);
+    },
+    'getFieldArrayIdValues': (id) => {
+
+        return Template.instance().address.get().checklistItems.filter(f => f.id == id)[0];
+    },
     'isEditing': () => {
 
         return Template.instance().isEditing.get();
     },
     /** @type boolean */
     'unblockEdit': (editPossible) => {
-
         return !(Template.instance().isEditing.get() && editPossible);
     },
     'formOptions':() => {
