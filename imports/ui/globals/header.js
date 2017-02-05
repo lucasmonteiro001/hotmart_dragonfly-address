@@ -12,6 +12,8 @@ Template.header.onRendered(() => {
 
     // TODO REMOVER
     Session.set('bearer', '3b0572c3-934b-4fe4-abe0-ad67c7d7693f');
+
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 Template.header.helpers({
@@ -27,11 +29,6 @@ Template.header.helpers({
 
         return isLoggedIn;
     }
-});
-
-Template.header.onRendered(() => {
-
-    console.log(TAPi18n.__('title'))
 });
 
 Template.header.events({

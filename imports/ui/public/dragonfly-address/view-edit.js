@@ -80,6 +80,7 @@ Template.dragonfly_address_view_edit.onCreated(function () {
 
 Template.dragonfly_address_view_edit.onRendered(() => {
 
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 Template.dragonfly_address_view_edit.helpers({
