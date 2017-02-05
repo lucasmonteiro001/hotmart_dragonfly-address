@@ -5,6 +5,7 @@ import './list.html';
 import {Addresses, Size, Page, Rows} from '../../../api/common/reactive-data';
 import Notification from '../../../api/common/notification';
 import { showLoading } from '../../../api/common/functions';
+import './view-edit';
 
 Template.dragonfly_address_list.helpers({
     'addressFormater':function() {
@@ -55,6 +56,10 @@ Template.dragonfly_address_list.helpers({
 });
 
 Template.dragonfly_address_list.events({
+    'click [name=viewEditAddress]': function (event) {
+
+        Modal.show('dragonfly_address_view_edit', this);
+    },
     'click [name=removeAddress]': function (event) {
 
         let result = confirm('Deseja mesmo remover este endereço da base de dados?');

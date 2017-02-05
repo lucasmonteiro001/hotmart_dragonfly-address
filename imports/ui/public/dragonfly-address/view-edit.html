@@ -1,0 +1,50 @@
+<template name="dragonfly_address_view_edit">
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Visualizar endereço</h4>
+                    <p class="text-right"><a class="btn btn-primary btn-sm" id="editAddress"><em class="fa fa-pencil"></em></a></p>
+                </div>
+
+                <div class="modal-body">
+                    <form>
+                        {{#each formOptions}}
+                            <div class="form-group {{col}}">
+                                <label for="{{id}}">{{label}}</label>
+                                <input type="{{type}}"
+                                       value="{{val}}"
+                                       class="form-control"
+                                       id="{{id}}"
+                                       pattern="{{pattern}}"
+                                       title="{{title}}"
+                                       placeholder="{{label}}"
+                                       disabled="{{isNotEditing}}"
+                                       required="{{required}}">
+                            </div>
+                        {{/each}}
+
+                        {{#unless isNotEditing}}
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <button type="submit"
+                                            id="adicionarEndereco"
+                                            class="btn btn-success"
+                                            data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Salvando">
+                                        Salvar
+                                    </button>
+                                </div>
+                            </div>
+                        {{/unless}}
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</template>
