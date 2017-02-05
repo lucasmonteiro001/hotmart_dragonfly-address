@@ -14,8 +14,7 @@ const L = require('leaflet');
 Session.set('map', false);
 
 // load a tile layer
-const BASE_LAYER = L.tileLayer('https://api.mapbox.com/styles/v1/lucasmonteiro001/ciylfwkph00332rqqmdd3bsdj/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibHVjYXNtb250ZWlybzAwMSIsImEiOiJjaXlsZTl0cGcwMDBrMzNwZm9qcnIxYjd6In0.V3qGeRTZbZW97ywL2Ue09Q',
-    {
+const BASE_LAYER = L.tileLayer(process.env.BASE_LAYER_URL, {
         attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
         maxZoom: 18
     });
