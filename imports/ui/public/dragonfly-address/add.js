@@ -5,19 +5,14 @@ import './add.html';
 import { HTTP } from 'meteor/http';
 import Notification from '../../../api/common/notification';
 import { showLoading } from '../../../api/common/functions';
-import { DragonflyAddressModel } from '../../../api/api-dragonfly/model';
+import { DragonflyAddressModel, DAMApplyMasks, DAMGetFormOptions } from '../../../api/api-dragonfly/model';
 
 Template.dragonfly_address_add.helpers({
     'formOptions':() => {
 
-        let options = [];
+        setTimeout(DAMApplyMasks, 200);
 
-        for(prop in DragonflyAddressModel) {
-
-            options.push(DragonflyAddressModel[prop]);
-        }
-
-        return options;
+        return DAMGetFormOptions();
     }
 });
 
@@ -28,7 +23,7 @@ Template.dragonfly_address_add.events({
 
         let url = 'https://viacep.com.br/ws/' + cep + '/json/';
 
-        if(cep.length === 8) {
+        if(cep.length === 9) {
 
             HTTP.get(url, {}, (err, response) => {
 

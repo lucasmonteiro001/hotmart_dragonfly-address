@@ -5,7 +5,7 @@ import './view-edit.html';
 import { showLoading } from '../../../api/common/functions';
 import Notification from '../../../api/common/notification';
 import { MapInstance } from '../../../api/common/reactive-data';
-import { DragonflyAddressModel } from '../../../api/api-dragonfly/model';
+import { DragonflyAddressModel, DAMApplyMasks, DAMGetFormOptions } from '../../../api/api-dragonfly/model';
 import { find } from '../utils/functions';
 import {Session} from 'meteor/session';
 
@@ -70,21 +70,9 @@ Template.dragonfly_address_view_edit.helpers({
     },
     'formOptions':() => {
 
-        let options = [];
+        setTimeout(DAMApplyMasks, 200);
 
-        for(prop in DragonflyAddressModel) {
-
-            let opt = {...DragonflyAddressModel[prop]};
-
-            // get the property current value
-            opt.val = Template.instance().address[prop];
-
-            options.push(opt);
-        }
-
-        console.log(options)
-
-        return options;
+        return DAMGetFormOptions(Template.instance().address);
     }
 });
 

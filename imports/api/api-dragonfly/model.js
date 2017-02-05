@@ -15,10 +15,14 @@ export const DragonflyAddressModel = {
         label: 'CEP',
         type: 'text',
         id: 'zipCode',
-        pattern: '[0-9]{8}',
         title: 'CEP só pode conter números',
         col: 'col-xs-2',
-        editPossible: false
+        editPossible: false,
+        dataMask: '00000-000',
+        dataMaskOptions: {
+            clearIfNotMatch: true,
+            placeholder: '_____-___'
+        }
     },
     "address": {
         label: 'Endereço',
@@ -70,6 +74,57 @@ export const DragonflyAddressModel = {
         required: true,
         editPossible: false
     }
+};
+
+/**
+ * Returns an array of options taking from the Model
+ * @param baseValues should be passed if the the should be filled with some values
+ * @returns {Array}
+ * @constructor
+ */
+export const DAMGetFormOptions = (baseValues) => {
+
+    let options = [];
+
+    for(prop in DragonflyAddressModel) {
+
+        let opt = {...DragonflyAddressModel[prop]};
+
+        if(baseValues) {
+            opt.val = baseValues[prop];
+        }
+
+        options.push(opt);
+    }
+
+    return options;
+};
+
+/**
+ * Search form the elements of the Model in the DOM and apply the masks
+ * @constructor
+ */
+export const DAMApplyMasks = () => {
+
+    // discover fields that must have mask
+    let shouldHaveMask = Object.keys(DragonflyAddressModel).filter(key => !!DragonflyAddressModel[key].dataMask),
+        willApplyMask = [];
+
+    for(field of shouldHaveMask) {
+        willApplyMask.push(DragonflyAddressModel[field]);
+    }
+
+    willApplyMask.map(element => {
+
+        let options = {};
+
+        // if exists options for the mask
+        if(element.dataMaskOptions) {
+            Object.assign(options, element.dataMaskOptions);
+        }
+
+        $('#' + element.id).mask(element.dataMask, options);
+    });
 };
 
 Object.freeze(DragonflyAddressModel);
