@@ -11,7 +11,7 @@ Template.header.onRendered(() => {
     Session.set('bearer', false);
 
     // TODO REMOVER
-    Session.set('bearer', '00984c7a-4883-4d51-a103-bbf9bc9861a2');
+    Session.set('bearer', '3b0572c3-934b-4fe4-abe0-ad67c7d7693f');
 });
 
 Template.header.helpers({

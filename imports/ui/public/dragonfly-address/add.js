@@ -5,67 +5,16 @@ import './add.html';
 import { HTTP } from 'meteor/http';
 import Notification from '../../../api/common/notification';
 import { showLoading } from '../../../api/common/functions';
-
-const formOptions = {
-    "label": {
-        label: 'Nome',
-        type: 'text',
-        id: 'label',
-        required: true
-    },
-    "zipCode": {
-        label: 'CEP',
-        type: 'text',
-        id: 'zipCode',
-        pattern: '[0-9]{8}',
-        title: 'CEP só pode conter números'
-    },
-    "address": {
-        label: 'Endereço',
-        type: 'text',
-        id: 'address'
-    },
-    "number": {
-        label: 'Número',
-        type: 'text',
-        id: 'number'
-    },
-    "neighborhood": {
-        label: 'Bairro',
-        type: 'text',
-        id: 'neighborhood'
-    },
-    "complement":{
-        label: 'Complemento',
-        type: 'text',
-        id: 'complement'
-    },
-    "city": {
-        label: 'Cidade',
-        type: 'text',
-        id: 'city'
-    },
-    "state": {
-        label: 'Estado',
-        type: 'text',
-        id: 'state'
-    },
-    "country": {
-        label: 'País',
-        type: 'text',
-        id: 'country',
-        required: true
-    }
-};
+import { DragonflyAddressModel } from '../../../api/api-dragonfly/model';
 
 Template.dragonfly_address_add.helpers({
     'formOptions':() => {
 
         let options = [];
 
-        for(prop in formOptions) {
+        for(prop in DragonflyAddressModel) {
 
-            options.push(formOptions[prop]);
+            options.push(DragonflyAddressModel[prop]);
         }
 
         return options;
@@ -114,8 +63,8 @@ Template.dragonfly_address_add.events({
         // get all form data
         let formData = {};
 
-        for(prop in formOptions) {
-            formData[prop] = $('#' + formOptions[prop].id).val();
+        for(prop in DragonflyAddressModel) {
+            formData[prop] = $('#' + DragonflyAddressModel[prop].id).val();
         }
 
         let params = {

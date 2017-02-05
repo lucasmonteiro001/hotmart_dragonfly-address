@@ -66,11 +66,9 @@ Meteor.methods({
 
             let {page, size, data} = response.data;
 
-            console.log(size, page);
-
             return {page, size, addresses: data};
 
-        } catch ( {response: {statusCode}} ) {
+        } catch ( error ) {
 
             console.log(error);
 

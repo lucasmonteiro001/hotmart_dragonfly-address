@@ -10,7 +10,7 @@
                 <div class="modal-body">
                     <form>
                         {{#each formOptions}}
-                            <div class="form-group">
+                            <div class="form-group {{col}}">
                                 <label for="{{id}}">{{label}}</label>
                                 <input type="{{type}}"
                                        class="form-control"
@@ -22,12 +22,16 @@
                             </div>
                         {{/each}}
 
-                        <button type="submit"
-                                id="adicionarEndereco"
-                                class="btn btn-success"
-                                data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Salvando">
-                            Salvar
-                        </button>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button type="submit"
+                                        id="adicionarEndereco"
+                                        class="btn btn-success"
+                                        data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Salvando">
+                                    Salvar
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
 
