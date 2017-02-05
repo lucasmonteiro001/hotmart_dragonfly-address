@@ -2,9 +2,9 @@
  * Created by lucas on 2/4/17.
  */
 import './settings.html';
-import { Rows, Page, Addresses, Size } from '../utils/reactive-data';
-import { showLoading } from '../../../ui/public/utils/functions';
-import { find } from '../utils/functions';
+import { Rows, Page, Addresses, Size } from '../../utils/reactive-data';
+import { showLoading } from '../../utils/functions';
+import { find } from '../../utils/functions';
 
 Template.dragonfly_settings.events({
     'submit form': (event) => {

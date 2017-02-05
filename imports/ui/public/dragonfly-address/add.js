@@ -3,9 +3,9 @@
  */
 import './add.html';
 import { HTTP } from 'meteor/http';
-import Notification from '../utils/notification';
-import { showLoading } from '../../../ui/public/utils/functions';
-import { find } from '../../public/utils/functions';
+import Notification from '../../utils/notification';
+import { showLoading } from '../../utils/functions';
+import { find } from '../../utils/functions';
 import { DragonflyAddressModel, DAMApplyMasks, DAMGetFormOptions } from '../../../api/api-dragonfly/model';
 
 Template.dragonfly_address_add.helpers({

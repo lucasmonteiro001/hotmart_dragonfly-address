@@ -2,11 +2,11 @@
  * Created by lucas on 2/4/17.
  */
 import './view-edit.html';
-import { showLoading } from '../../../ui/public/utils/functions';
-import Notification from '../utils/notification';
-import { MapInstance } from '../utils/reactive-data';
+import { showLoading } from '../../utils/functions';
+import Notification from '../../utils/notification';
+import { MapInstance } from '../../utils/reactive-data';
 import { DragonflyAddressModel, DAMApplyMasks, DAMGetFormOptions, DAMGetFilledFormValues } from '../../../api/api-dragonfly/model';
-import { find } from '../utils/functions';
+import { find } from '../../utils/functions';
 import {Session} from 'meteor/session';
 
 const L = require('leaflet');
