@@ -117,7 +117,6 @@ Template.dragonfly_address_view_edit.helpers({
         let address = Template.instance().address;
 
         if(address.get()) {
-            console.log(address.get())
             setTimeout(DAMApplyMasks, 200);
             return DAMGetFormOptions(address.get());
         }

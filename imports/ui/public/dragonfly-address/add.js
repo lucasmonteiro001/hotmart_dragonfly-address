@@ -5,6 +5,7 @@ import './add.html';
 import { HTTP } from 'meteor/http';
 import Notification from '../../../api/utils/notification';
 import { showLoading } from '../../../api/utils/functions';
+import { find } from '../utils/functions';
 import { DragonflyAddressModel, DAMApplyMasks, DAMGetFormOptions } from '../../../api/api-dragonfly/model';
 
 Template.dragonfly_address_add.helpers({
@@ -12,7 +13,8 @@ Template.dragonfly_address_add.helpers({
 
         setTimeout(DAMApplyMasks, 200);
 
-        return DAMGetFormOptions();
+        // do not return objects where type=ARRAY
+        return DAMGetFormOptions().filter(element => element.type.toLowerCase() != 'array');
     }
 });
 
@@ -82,15 +84,12 @@ Template.dragonfly_address_add.events({
                 return;
             }
 
-            Notification.success('Endereço salvo com sucesso!');
-
             showLoading(false);
+
+            find('Endereço salvo com sucesso!');
 
             Modal.hide();
 
-            setTimeout(() => {
-                Notification.info('Para visualizar o novo endereço criado, clique em Obter endereços novamente!');
-            }, 2000);
         });
     }
 });

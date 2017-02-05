@@ -5,7 +5,7 @@ import {Addresses, Size, Page, Rows} from '../../../api/utils/reactive-data';
 import Notification from '../../../api/utils/notification';
 import { showLoading } from '../../../api/utils/functions';
 
-export const find = () => {
+export const find = (successMsg = "Endereço obtido com sucesso!") => {
 
     showLoading(true);
 
@@ -31,6 +31,6 @@ export const find = () => {
 
         showLoading(false);
 
-        Notification.success('Endereços obtidos com sucesso!');
+        Notification.success(successMsg);
     });
 };
