@@ -94,6 +94,23 @@ Meteor.methods({
 
             throw new Meteor.Error(statusCode, Status.get(statusCode).reason, Status.get(statusCode).details);
         }
+    },
+    'dragonfly-update'({access_token, data}) {
+
+
+        try {
+            let address = HTTP.call('PUT', API.update(data.id), {data, headers: {Authorization: `Bearer ${access_token}`}})
+
+            return address;
+
+        } catch (error) {
+
+            console.log(error);
+
+            let {response: {statusCode, content}} = error;
+
+            throw new Meteor.Error(statusCode, Status.get(statusCode).reason, Status.get(statusCode).details);
+        }
     }
 
 });
