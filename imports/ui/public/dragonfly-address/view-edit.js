@@ -156,13 +156,11 @@ Template.dragonfly_address_view_edit.events({
                 return;
             }
 
-            Notification.success('Endereço atualizado com sucesso!');
-
             showLoading(false);
 
             Modal.hide();
 
-            find();
+            find('Endereço atualizado com sucesso!');
         });
     }
 });

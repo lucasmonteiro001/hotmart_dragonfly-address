@@ -21,9 +21,9 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>Nome</th>
-                                    <th>Endereço</th>
-                                    <th><em class="fa fa-cog"></em></th>
+                                    <th class="text-center">Nome</th>
+                                    <th class="text-center">Endereço</th>
+                                    <th class="text-center"><em class="fa fa-cog"></em></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -31,16 +31,14 @@
                                         <tr>
                                             <td class="text-left">{{label}}</td>
                                             <td class="text-left">{{addressFormater}}</td>
-                                            <td align="center">
-                                                <div class="row">
-                                                    <div class="col-xs-6">
-                                                        <a class="btn btn-default btn-sm" name="viewEditAddress"><em class="fa fa-eye"></em></a>
-                                                    </div>
-                                                    <div class="col-xs-6" style="margin-left: -15px">
-                                                        <a class="btn btn-danger btn-sm" name="removeAddress"><em class="fa fa-trash"></em></a>
-                                                    </div>
-
-
+                                            <td align="center" class="col-xs-2" style="min-width: 64px">
+                                                    <div class="btn-group" role="group">
+                                                        <button type="button" class="btn btn-default btn-sm" name="viewEditAddress">
+                                                            <i class="fa fa-eye"></i>
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger btn-sm" name="removeAddress">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
                                                 </div>
                                             </td>
                                         </tr>
