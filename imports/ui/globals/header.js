@@ -4,7 +4,7 @@ import '../public/dragonfly-address/settings'
 import './header.html';
 import Notification from '../public/utils/notification';
 import { Session } from 'meteor/session';
-import { Addresses, Page, Size, Rows } from '../../api/utils/reactive-data';
+import { Addresses, Page, Size, Rows } from '../public/utils/reactive-data';
 import { showLoading } from '../../ui/public/utils/functions';
 
 Template.header.onRendered(() => {

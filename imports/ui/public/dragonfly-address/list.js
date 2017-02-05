@@ -2,7 +2,7 @@
  * Created by lucas on 2/4/17.
  */
 import './list.html';
-import {Addresses, Size, Page, Rows} from '../../../api/utils/reactive-data';
+import {Addresses, Size, Page, Rows} from '../utils/reactive-data';
 import Notification from '../utils/notification';
 import { showLoading } from '../../public/utils/functions';
 import './view-edit';

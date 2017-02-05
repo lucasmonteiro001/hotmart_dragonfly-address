@@ -1,7 +1,7 @@
 /**
  * Created by lucas on 2/4/17.
  */
-import {Addresses, Size, Page, Rows} from '../../../api/utils/reactive-data';
+import {Addresses, Size, Page, Rows} from './reactive-data';
 import Notification from './notification';
 
 export const find = (successMsg = "Endereços obtidos com sucesso!") => {
