@@ -5,7 +5,7 @@ import {Addresses, Size, Page, Rows} from '../../../api/utils/reactive-data';
 import Notification from '../../../api/utils/notification';
 import { showLoading } from '../../../api/utils/functions';
 
-export const find = (successMsg = "Endereço obtido com sucesso!") => {
+export const find = (successMsg = "Endereços obtidos com sucesso!") => {
 
     showLoading(true);
 
