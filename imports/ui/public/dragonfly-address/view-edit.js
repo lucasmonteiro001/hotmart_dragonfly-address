@@ -4,8 +4,22 @@
 import './view-edit.html';
 import { showLoading } from '../../../api/common/functions';
 import Notification from '../../../api/common/notification';
+import { MapInstance } from '../../../api/common/reactive-data';
 import { DragonflyAddressModel } from '../../../api/api-dragonfly/model';
 import { find } from '../utils/functions';
+import {Session} from 'meteor/session';
+
+const L = require('leaflet');
+
+Session.set('map', false);
+
+// load a tile layer
+const BASE_LAYER = L.tileLayer('https://api.mapbox.com/styles/v1/lucasmonteiro001/ciylfwkph00332rqqmdd3bsdj/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibHVjYXNtb250ZWlybzAwMSIsImEiOiJjaXlsZTl0cGcwMDBrMzNwZm9qcnIxYjd6In0.V3qGeRTZbZW97ywL2Ue09Q',
+    {
+        attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
+        maxZoom: 18
+    });
+
 
 Template.dragonfly_address_view_edit.onCreated(function () {
 
@@ -16,7 +30,38 @@ Template.dragonfly_address_view_edit.onCreated(function () {
     Template.instance().isEditing = new ReactiveVar(false);
 });
 
+Template.dragonfly_address_view_edit.onRendered(() => {
+
+    let {latitude, longitude} = Template.instance().address;
+
+    if(!(latitude && longitude)) {
+        return;
+    }
+
+    setTimeout(() => {
+        let map = MapInstance.get();
+
+        // if map instantiate, remove it first
+        if(map) {
+            map.remove();
+        }
+
+        map = L.map('mapid', {layers: [BASE_LAYER]}).setView([latitude, longitude], 13);
+
+        L.marker([latitude, longitude]).addTo(map);
+
+        MapInstance.set(map);
+    }, 500);
+
+});
+
 Template.dragonfly_address_view_edit.helpers({
+    'hasLatLng': () => {
+
+        let {latitude, longitude} = Template.instance().address;
+
+        return !!latitude && !!longitude;
+    },
     'isEditing': () => {
         return Template.instance().isEditing.get();
     },

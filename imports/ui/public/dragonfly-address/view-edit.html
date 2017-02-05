@@ -30,6 +30,16 @@
                                 </div>
                             {{/each}}
 
+                            {{#if hasLatLng}}
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-10">
+                                        <div id="mapid" style="height: 320px;width: 100%"></div>
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                </div>
+                            {{/if}}
+
                             {{#if isEditing}}
                                 <div class="row">
                                     <div class="col-xs-12">
