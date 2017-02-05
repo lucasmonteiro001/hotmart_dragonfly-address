@@ -16,7 +16,7 @@ export const DragonflyAddressModel = {
         type: 'text',
         id: 'zipCode',
         title: 'CEP só pode conter números',
-        col: 'col-xs-2',
+        col: 'col-xs-6 col-md-2',
         editPossible: false,
         dataMask: '00000-000',
         dataMaskOptions: {
@@ -28,49 +28,49 @@ export const DragonflyAddressModel = {
         label: 'Endereço',
         type: 'text',
         id: 'address',
-        col: 'col-xs-5',
+        col: 'col-xs-12 col-md-3',
         editPossible: false
     },
     "number": {
         label: 'Número',
         type: 'text',
         id: 'number',
-        col: 'col-xs-1',
+        col: 'col-xs-3 col-md-2',
         editPossible: false
     },
     "neighborhood": {
         label: 'Bairro',
         type: 'text',
         id: 'neighborhood',
-        col: 'col-xs-2',
+        col: 'col-xs-6 col-md-2',
         editPossible: false
     },
     "complement":{
         label: 'Complemento',
         type: 'text',
         id: 'complement',
-        col: 'col-xs-2',
+        col: 'col-xs-3 col-md-3',
         editPossible: false
     },
     "city": {
         label: 'Cidade',
         type: 'text',
         id: 'city',
-        col: 'col-xs-5',
+        col: 'col-xs-6 col-md-2',
         editPossible: false
     },
     "state": {
         label: 'Estado',
         type: 'text',
         id: 'state',
-        col: 'col-xs-3',
+        col: 'col-xs-6 col-md-3',
         editPossible: false
     },
     "country": {
         label: 'País',
         type: 'text',
         id: 'country',
-        col: 'col-xs-4',
+        col: 'col-xs-6 col-md-2',
         required: true,
         editPossible: false
     },
