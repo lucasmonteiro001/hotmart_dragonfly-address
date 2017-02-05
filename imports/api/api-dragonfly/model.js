@@ -127,4 +127,32 @@ export const DAMApplyMasks = () => {
     });
 };
 
+/**
+ * Get all values from the DOM
+ * @param addressId of the address being saved
+ * @returns {{}}
+ * @constructor
+ */
+export const DAMGetFilledFormValues = (addressId) => {
+
+    // get all form data
+    let formData = {};
+
+    for(prop in DragonflyAddressModel) {
+
+        // get only editPossible values
+        if(DragonflyAddressModel[prop].editPossible) {
+            formData[prop] = $('#' + DragonflyAddressModel[prop].id).val();
+        }
+    }
+
+    // add id to the form regarding the address beign edited
+    formData.id = addressId;
+
+    // TODO buscar dados automaticamente
+    formData.availableItems = [];
+
+    return formData;
+};
+
 Object.freeze(DragonflyAddressModel);

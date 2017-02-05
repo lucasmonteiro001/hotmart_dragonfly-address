@@ -5,7 +5,7 @@ import './view-edit.html';
 import { showLoading } from '../../../api/common/functions';
 import Notification from '../../../api/common/notification';
 import { MapInstance } from '../../../api/common/reactive-data';
-import { DragonflyAddressModel, DAMApplyMasks, DAMGetFormOptions } from '../../../api/api-dragonfly/model';
+import { DragonflyAddressModel, DAMApplyMasks, DAMGetFormOptions, DAMGetFilledFormValues } from '../../../api/api-dragonfly/model';
 import { find } from '../utils/functions';
 import {Session} from 'meteor/session';
 
@@ -86,18 +86,7 @@ Template.dragonfly_address_view_edit.events({
 
         showLoading(true);
 
-        // get all form data
-        let formData = {};
-
-        for(prop in DragonflyAddressModel) {
-            formData[prop] = $('#' + DragonflyAddressModel[prop].id).val();
-        }
-
-        // add id to the form regarding the address beign edited
-        formData.id = Template.instance().address.id;
-
-        // TODO buscar dados automaticamente
-        formData.availableItems = [];
+        let formData = DAMGetFilledFormValues(Template.instance().address.id);
 
         let params = {
             access_token: Session.get('bearer'),
