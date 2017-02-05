@@ -2,7 +2,7 @@
  * Created by lucas on 2/4/17.
  */
 import './view-edit.html';
-import { showLoading } from '../../../api/utils/functions';
+import { showLoading } from '../../../ui/public/utils/functions';
 import Notification from '../../../api/utils/notification';
 import { MapInstance } from '../../../api/utils/reactive-data';
 import { DragonflyAddressModel, DAMApplyMasks, DAMGetFormOptions, DAMGetFilledFormValues } from '../../../api/api-dragonfly/model';

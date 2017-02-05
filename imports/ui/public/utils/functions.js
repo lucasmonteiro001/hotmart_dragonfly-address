@@ -3,7 +3,6 @@
  */
 import {Addresses, Size, Page, Rows} from '../../../api/utils/reactive-data';
 import Notification from '../../../api/utils/notification';
-import { showLoading } from '../../../api/utils/functions';
 
 export const find = (successMsg = "Endereços obtidos com sucesso!") => {
 
@@ -34,3 +33,5 @@ export const find = (successMsg = "Endereços obtidos com sucesso!") => {
         Notification.success(successMsg);
     });
 };
+
+export const showLoading = (bool = false) => Session.set('showLoading', bool);

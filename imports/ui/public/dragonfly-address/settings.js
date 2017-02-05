@@ -3,7 +3,7 @@
  */
 import './settings.html';
 import { Rows, Page, Addresses, Size } from '../../../api/utils/reactive-data';
-import { showLoading } from '../../../api/utils/functions';
+import { showLoading } from '../../../ui/public/utils/functions';
 
 Template.dragonfly_settings.events({
     'submit form': (event) => {

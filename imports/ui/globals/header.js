@@ -5,7 +5,7 @@ import './header.html';
 import Notification from '../../api/utils/notification';
 import { Session } from 'meteor/session';
 import { Addresses, Page, Size, Rows } from '../../api/utils/reactive-data';
-import { showLoading } from '../../api/utils/functions';
+import { showLoading } from '../../ui/public/utils/functions';
 
 Template.header.onRendered(() => {
     Session.set('bearer', false);
