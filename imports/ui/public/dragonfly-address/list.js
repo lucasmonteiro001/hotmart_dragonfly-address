@@ -3,7 +3,7 @@
  */
 import './list.html';
 import {Addresses, Size, Page, Rows} from '../../../api/utils/reactive-data';
-import Notification from '../../../api/utils/notification';
+import Notification from '../utils/notification';
 import { showLoading } from '../../public/utils/functions';
 import './view-edit';
 import { Session } from 'meteor/session';

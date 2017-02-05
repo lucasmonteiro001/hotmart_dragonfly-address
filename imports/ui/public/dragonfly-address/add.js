@@ -3,7 +3,7 @@
  */
 import './add.html';
 import { HTTP } from 'meteor/http';
-import Notification from '../../../api/utils/notification';
+import Notification from '../utils/notification';
 import { showLoading } from '../../../ui/public/utils/functions';
 import { find } from '../../public/utils/functions';
 import { DragonflyAddressModel, DAMApplyMasks, DAMGetFormOptions } from '../../../api/api-dragonfly/model';
