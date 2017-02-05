@@ -50,23 +50,28 @@ Template.dragonfly_address_view_edit.onCreated(function () {
         let {latitude, longitude} = address;
 
         if(!(latitude && longitude)) {
+            showLoading(false);
             return;
         }
 
-        setTimeout(() => {
-            let map = MapInstance.get();
+        // renders map of if latitude and longitude are different of zero
+        if(!(latitude == 0 || longitude == 0)) {
 
-            // if map instantiate, remove it first
-            if(map) {
-                map.remove();
-            }
+            setTimeout(() => {
+                let map = MapInstance.get();
 
-            map = L.map('mapid', {layers: [BASE_LAYER]}).setView([latitude, longitude], 13);
+                // if map instantiate, remove it first
+                if(map) {
+                    map.remove();
+                }
 
-            L.marker([latitude, longitude]).addTo(map);
+                map = L.map('mapid', {layers: [BASE_LAYER]}).setView([latitude, longitude], 13);
 
-            MapInstance.set(map);
-        }, 500);
+                L.marker([latitude, longitude]).addTo(map);
+
+                MapInstance.set(map);
+            }, 500);
+        }
 
         showLoading(false);
 

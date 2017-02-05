@@ -7,7 +7,7 @@
                     <h4 class="modal-title">Visualizar endereço</h4>
                     <div class="row">
                         <div class="col-xs-12">
-                            <p class="text-right"><a class="btn btn-primary btn-sm" id="editAddress"><em class="fa fa-pencil"></em></a></p>
+                            <p class="text-right"><a class="btn btn-primary btn-lg" id="editAddress"><em class="fa fa-pencil"></em></a></p>
                         </div>
                     </div>
                 </div>
@@ -65,31 +65,20 @@
                                 </div>
                             {{/if}}
 
-                            {{#if isEditing}}
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <button type="submit"
-                                                id="adicionarEndereco"
-                                                class="btn btn-success"
-                                                data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Salvando">
-                                            Salvar
-                                        </button>
-                                    </div>
-                                </div>
-                            {{/if}}
+                            <div class="col-xs-12 text-right">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                {{#if isEditing}}
+                                    <button type="submit"
+                                            id="adicionarEndereco"
+                                            class="btn btn-success"
+                                            data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Salvando">
+                                        Salvar
+                                    </button>
+                                {{/if}}
+                            </div>
                         </form>
                     </div>
-
                 </div>
-
-                <div class="modal-footer">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
