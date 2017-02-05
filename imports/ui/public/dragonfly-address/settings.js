@@ -2,8 +2,8 @@
  * Created by lucas on 2/4/17.
  */
 import './settings.html';
-import { Rows, Page, Addresses, Size } from '../../../api/common/reactive-data';
-import { showLoading } from '../../../api/common/functions';
+import { Rows, Page, Addresses, Size } from '../../../api/utils/reactive-data';
+import { showLoading } from '../../../api/utils/functions';
 
 Template.dragonfly_settings.events({
     'submit form': (event) => {

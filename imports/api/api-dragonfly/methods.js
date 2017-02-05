@@ -3,10 +3,10 @@
  */
 import {Meteor} from 'meteor/meteor';
 import {HTTP} from 'meteor/http';
-import API from '../common/api-url';
-import Status from '../common/status-code';
+import API from '../utils/api-url';
+import Status from '../utils/status-code';
 
-import {getLatLng} from '../common/location';
+import {getLatLng} from '../utils/location';
 
 Meteor.methods({
 

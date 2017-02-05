@@ -192,9 +192,6 @@ export const DAMGetFilledFormValues = (addressId) => {
             // if it's array field
             if(DragonflyAddressModel[prop].type.toLowerCase() == 'array') {
 
-                let array = DragonflyAddressModel[prop].fields,
-                    id = array[0].id;
-
                 // get all checklistItem
                 let checklistItems = $('[name=checklistItem]');
 

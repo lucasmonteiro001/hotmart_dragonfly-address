@@ -2,10 +2,10 @@ import { Template } from 'meteor/templating';
 import '../public/dragonfly-address/add'
 import '../public/dragonfly-address/settings'
 import './header.html';
-import Notification from '../../api/common/notification';
+import Notification from '../../api/utils/notification';
 import { Session } from 'meteor/session';
-import { Addresses, Page, Size, Rows } from '../../api/common/reactive-data';
-import { showLoading } from '../../api/common/functions';
+import { Addresses, Page, Size, Rows } from '../../api/utils/reactive-data';
+import { showLoading } from '../../api/utils/functions';
 
 Template.header.onRendered(() => {
     Session.set('bearer', false);

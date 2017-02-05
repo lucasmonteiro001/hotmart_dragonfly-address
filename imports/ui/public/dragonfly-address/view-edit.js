@@ -2,9 +2,9 @@
  * Created by lucas on 2/4/17.
  */
 import './view-edit.html';
-import { showLoading } from '../../../api/common/functions';
-import Notification from '../../../api/common/notification';
-import { MapInstance } from '../../../api/common/reactive-data';
+import { showLoading } from '../../../api/utils/functions';
+import Notification from '../../../api/utils/notification';
+import { MapInstance } from '../../../api/utils/reactive-data';
 import { DragonflyAddressModel, DAMApplyMasks, DAMGetFormOptions, DAMGetFilledFormValues } from '../../../api/api-dragonfly/model';
 import { find } from '../utils/functions';
 import {Session} from 'meteor/session';
