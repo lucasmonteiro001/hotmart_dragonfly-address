@@ -23,12 +23,11 @@
                                             {{#with checklistItem=(getFieldArrayIdValues this)}}
                                                 <div class="form-group">
                                                     <div class="checkbox">
-                                                        <input type="hidden"
-                                                               name="id"
-                                                               value="{{checklistItem.id}}"
-                                                               disabled="{{unblockEdit true}}">
                                                         <label>
                                                             <input type="checkbox"
+                                                                   name="checklistItem"
+                                                                   id="{{checklistItem.id}}-available"
+                                                                   refId="{{checklistItem.id}}"
                                                                    checked="{{checklistItem.available}}"
                                                                    disabled="{{unblockEdit true}}">
                                                             <span><b>{{checklistItem.name}}</b></span>

@@ -188,15 +188,46 @@ export const DAMGetFilledFormValues = (addressId) => {
 
         // get only editPossible values
         if(DragonflyAddressModel[prop].editPossible) {
-            formData[prop] = $('#' + DragonflyAddressModel[prop].id).val();
+
+            // if it's array field
+            if(DragonflyAddressModel[prop].type.toLowerCase() == 'array') {
+
+                let array = DragonflyAddressModel[prop].fields,
+                    id = array[0].id;
+
+                // get all checklistItem
+                let checklistItems = $('[name=checklistItem]');
+
+                let checklistResult = checklistItems.map((i, check) => {
+
+                    check = $(check);
+
+                    return { id: check.attr('refid'),
+                            available: check[0].checked
+                    };
+                });
+
+                // filter only checked items
+                checklistResult = checklistResult.filter((i, checkItem) => checkItem.available);
+
+                // get final checklist
+                let checklistFinal = [];
+
+                checklistResult.map((i, check) => checklistFinal.push(Number(check.id)));
+
+                formData.availableItems = checklistFinal;
+            }
+            else {
+                formData[prop] = $('#' + DragonflyAddressModel[prop].id).val();
+            }
+
         }
     }
 
     // add id to the form regarding the address beign edited
     formData.id = addressId;
 
-    // TODO buscar dados automaticamente
-    formData.availableItems = [];
+    console.log(formData);
 
     return formData;
 };
