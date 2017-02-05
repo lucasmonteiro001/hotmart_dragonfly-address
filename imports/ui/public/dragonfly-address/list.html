@@ -1,65 +1,73 @@
 <template name="dragonfly_address_list">
-    {{#if isEmpty}}
-        <div class="row text-center">
-           <div class="col-xs-12" style="font-size: large">
-               Nenhum dado disponível no momento.
-               Atualize os dados ou adicione um novo endereço.
-           </div>
-        </div>
-    {{else}}
-        <div class="col-md-10 col-md-offset-1">
-
-            <div class="panel panel-default panel-table">
-                <div class="panel-body">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Endereço</th>
-                            <th><em class="fa fa-cog"></em></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            {{#each addresses}}
-                                <tr>
-                                    <td class="text-left">{{label}}</td>
-                                    <td class="text-left">{{addressFormater}}</td>
-                                    <td align="center">
-                                        <div class="row">
-                                            <div class="col-xs-6">
-                                                <a class="btn btn-default btn-sm" name="viewEditAddress"><em class="fa fa-eye"></em></a>
-                                            </div>
-                                            <div class="col-xs-6" style="margin-left: -15px">
-                                                <a class="btn btn-danger btn-sm" name="removeAddress"><em class="fa fa-trash"></em></a>
-                                            </div>
-
-
-                                        </div>
-                                    </td>
-                                </tr>
-                            {{/each}}
-                        </tbody>
-                    </table>
-
-                </div>
-                <div class="panel-footer">
-                    <div class="row">
-                        <div class="col col-xs-8"> {{footerText}} |  Mostrando de {{firstLineViewPostion}} a {{lastLineViewPostion}} de um total de {{size}} resultados
-                        </div>
-                        <div class="col col-xs-4">
-                            <ul class="pagination hidden-xs pull-right">
-                                <li><a id="prevRow" href="#">« Anterior</a></li>
-                                <li><a id="nextRow" href="#">Próximo »</a></li>
-                            </ul>
-                            <ul class="pagination visible-xs pull-right">
-                                <li><a id="prevRow" href="#">«</a></li>
-                                <li><a id="nextRow" href="#">»</a></li>
-                            </ul>
-                        </div>
-                    </div>
+        {{#if isNotLoggedIn}}
+            <div class="row text-center">
+                <div class="col-xs-12" style="font-size: large">
+                    É necessário realizar o Login clicando no botão acima!
                 </div>
             </div>
+        {{else}}
+            {{#if isEmpty}}
+                <div class="row text-center">
+                   <div class="col-xs-12" style="font-size: large">
+                       Nenhum dado disponível no momento.
+                       Atualize os dados ou adicione um novo endereço.
+                   </div>
+                </div>
+            {{else}}
+                <div class="col-md-10 col-md-offset-1">
 
-        </div>
+                    <div class="panel panel-default panel-table">
+                        <div class="panel-body">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Endereço</th>
+                                    <th><em class="fa fa-cog"></em></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each addresses}}
+                                        <tr>
+                                            <td class="text-left">{{label}}</td>
+                                            <td class="text-left">{{addressFormater}}</td>
+                                            <td align="center">
+                                                <div class="row">
+                                                    <div class="col-xs-6">
+                                                        <a class="btn btn-default btn-sm" name="viewEditAddress"><em class="fa fa-eye"></em></a>
+                                                    </div>
+                                                    <div class="col-xs-6" style="margin-left: -15px">
+                                                        <a class="btn btn-danger btn-sm" name="removeAddress"><em class="fa fa-trash"></em></a>
+                                                    </div>
+
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col col-xs-8"> {{footerText}} |  Mostrando de {{firstLineViewPostion}} a {{lastLineViewPostion}} de um total de {{size}} resultados
+                                </div>
+                                <div class="col col-xs-4">
+                                    <ul class="pagination hidden-xs pull-right">
+                                        <li><a id="prevRow" href="#">« Anterior</a></li>
+                                        <li><a id="nextRow" href="#">Próximo »</a></li>
+                                    </ul>
+                                    <ul class="pagination visible-xs pull-right">
+                                        <li><a id="prevRow" href="#">«</a></li>
+                                        <li><a id="nextRow" href="#">»</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            {{/if}}
     {{/if}}
 </template>

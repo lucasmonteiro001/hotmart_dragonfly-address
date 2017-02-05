@@ -13,6 +13,9 @@ Template.dragonfly_address_list.onRendered(() => {
 });
 
 Template.dragonfly_address_list.helpers({
+    'isNotLoggedIn': () => {
+        return !Session.get('bearer');
+    },
     'addressFormater':function() {
 
         let self = this;
