@@ -2,6 +2,9 @@
  * Created by lucas on 2/4/17.
  */
 
+/** Model definition of all fields of a Dragonfly Address Model
+ * @type {{label: {label: string, type: string, id: string, required: boolean, col: string, editPossible: boolean}, zipCode: {label: string, type: string, id: string, title: string, col: string, editPossible: boolean, dataMask: string, dataMaskOptions: {clearIfNotMatch: boolean, placeholder: string}}, address: {label: string, type: string, id: string, col: string, editPossible: boolean}, number: {label: string, type: string, id: string, col: string, editPossible: boolean}, neighborhood: {label: string, type: string, id: string, col: string, editPossible: boolean}, complement: {label: string, type: string, id: string, col: string, editPossible: boolean}, city: {label: string, type: string, id: string, col: string, editPossible: boolean}, state: {label: string, type: string, id: string, col: string, editPossible: boolean}, country: {label: string, type: string, id: string, col: string, required: boolean, editPossible: boolean}, checkListItems: {editOnly: boolean, type: string, editPossible: boolean, fields: [*]}}}
+ */
 export const DragonflyAddressModel = {
     "label": {
         label: 'Nome',
@@ -109,6 +112,8 @@ export const DragonflyAddressModel = {
     }
 };
 
+Object.freeze(DragonflyAddressModel);
+
 /**
  * Returns an array of options taking from the Model
  * @param baseValues should be passed if the the should be filled with some values
@@ -119,6 +124,7 @@ export const DAMGetFormOptions = (baseValues, isEdit = false) => {
 
     let options = [];
 
+    // Loop through Model fields
     for(prop in DragonflyAddressModel) {
 
         let opt = {...DragonflyAddressModel[prop]};
@@ -139,7 +145,7 @@ export const DAMGetFormOptions = (baseValues, isEdit = false) => {
             }
         }
 
-
+        // add option
         options.push(opt);
     }
 
@@ -156,6 +162,7 @@ export const DAMApplyMasks = () => {
     let shouldHaveMask = Object.keys(DragonflyAddressModel).filter(key => !!DragonflyAddressModel[key].dataMask),
         willApplyMask = [];
 
+    // get fields that will have masks applied
     for(field of shouldHaveMask) {
         willApplyMask.push(DragonflyAddressModel[field]);
     }
@@ -169,6 +176,7 @@ export const DAMApplyMasks = () => {
             Object.assign(options, element.dataMaskOptions);
         }
 
+        // apply masks in the DOM
         $('#' + element.id).mask(element.dataMask, options);
     });
 };
@@ -184,6 +192,7 @@ export const DAMGetFilledFormValues = (addressId) => {
     // get all form data
     let formData = {};
 
+    // Loop through all Model fields
     for(prop in DragonflyAddressModel) {
 
         // get only editPossible values
@@ -224,9 +233,5 @@ export const DAMGetFilledFormValues = (addressId) => {
     // add id to the form regarding the address beign edited
     formData.id = addressId;
 
-    console.log(formData);
-
     return formData;
 };
-
-Object.freeze(DragonflyAddressModel);

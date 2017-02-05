@@ -4,6 +4,10 @@
 import {Addresses, Size, Page, Rows} from './reactive-data';
 import Notification from './notification';
 
+/**
+ * Run the Meteor.call('find') action to retrieve all data from the server given page and rows
+ * @param successMsg
+ */
 export const find = (successMsg = "Endereços obtidos com sucesso!") => {
 
     showLoading(true);
@@ -34,4 +38,8 @@ export const find = (successMsg = "Endereços obtidos com sucesso!") => {
     });
 };
 
+/**
+ * Shows the loading template or hide it, give the parameter $bool
+ * @param bool
+ */
 export const showLoading = (bool = false) => Session.set('showLoading', bool);

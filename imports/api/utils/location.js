@@ -15,14 +15,19 @@ const zipCodeErrorObject = {
 
 const NodeGeocoder = require('node-geocoder');
 
+// Options for geocode
 const options = {
     provider: 'google',
-    // Optional depending on the providers
-    apiKey: process.env.GOOGLE_GEOCODE_KEY, // for Mapquest, OpenCage, Google Premier
+    apiKey: process.env.GOOGLE_GEOCODE_KEY
 };
 
 const geocoder = NodeGeocoder(options);
 
+/**
+ * Find latitude and longitude based on the $data passed as a parameter
+ * @param data (should be a zipCode, e.g 32115-190)
+ * @return Promise. If resolve, return {latitude, longitude}, else throw error
+ */
 export function getLatLng(data) {
 
     return new Promise((resolve, reject) => {
@@ -33,6 +38,7 @@ export function getLatLng(data) {
             return;
         }
 
+        // make request
         geocoder.geocode(data, function(err, res) {
 
             if(err) {

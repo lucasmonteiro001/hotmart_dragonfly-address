@@ -4,7 +4,7 @@ import '../../../ui/layouts/default';
 import '../../../ui/public/index'
 
 const publicRoutes = FlowRouter.group({
-    name: 'authenticated',
+    name: 'public',
 });
 
 publicRoutes.route( '/', {

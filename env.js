@@ -1,6 +1,12 @@
 /**
  * Created by lucas on 2/3/17.
  */
+
+/**
+ * File that contains sensitive information used system-wide
+ * @type {{API_ADDRESS: string, API_LOGIN: string, HEADER_AUTHORIZATION: string, GOOGLE_GEOCODE_KEY: string, BASE_LAYER_URL: string}}
+ */
+
 const config = {
     API_ADDRESS: 'http://54.159.182.138/hack-dragonfly/rest/v1/address',
     API_LOGIN: 'http://api-hck.hotmart.com/security/oauth/token?grant_type=password&username=desafio.front@hotmart.com.br&password=123456',

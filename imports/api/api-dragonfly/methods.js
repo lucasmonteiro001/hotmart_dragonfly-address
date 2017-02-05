@@ -10,12 +10,14 @@ import {getLatLng} from '../utils/location';
 
 Meteor.methods({
 
+    /**
+     * Get a new authentication token to perform actions in the system
+     * @returns {*}
+     */
     'dragonfly-login'() {
 
         try {
             let {data: {access_token}} = HTTP.call('POST', process.env.API_LOGIN, {headers: {Authorization: process.env.HEADER_AUTHORIZATION}});
-
-            console.info('access_token', access_token);
 
             return access_token;
 
@@ -29,6 +31,11 @@ Meteor.methods({
         }
 
     },
+    /**
+     * Inserts a new data in the database
+     * @param access_token
+     * @param data
+     */
     'dragonfly-insert'({access_token, data}) {
 
         return getLatLng(data.zipCode)
@@ -59,6 +66,14 @@ Meteor.methods({
 
 
     },
+    /**
+     * Find one address (if param.id is passed) or brings all data from the system (given the page and rows parameters)
+     * @param access_token
+     * @param id
+     * @param page
+     * @param rows
+     * @returns {*}
+     */
     'dragonfly-find'({access_token, id = null, page = 1, rows = 20}) {
 
         let httpAddress =  "";
@@ -94,6 +109,12 @@ Meteor.methods({
             throw new Meteor.Error(statusCode, Status.get(statusCode).reason, Status.get(statusCode).details);
         }
     },
+    /**
+     * Remove an address given its id
+     * @param access_token
+     * @param id
+     * @returns {*}
+     */
     'dragonfly-remove'({access_token, id}) {
 
         let formData = { id };
@@ -112,6 +133,12 @@ Meteor.methods({
             throw new Meteor.Error(statusCode, Status.get(statusCode).reason, Status.get(statusCode).details);
         }
     },
+    /**
+     * Update and address with data passed as a parameter
+     * @param access_token
+     * @param data
+     * @returns {*}
+     */
     'dragonfly-update'({access_token, data}) {
 
 

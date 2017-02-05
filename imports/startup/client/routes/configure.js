@@ -3,6 +3,6 @@ import '../../../ui/globals/not-found';
 
 FlowRouter.notFound = {
   action() {
-    BlazeLayout.render( 'notFound');
+      FlowRouter.go('index');
   }
 };
