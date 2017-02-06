@@ -6,6 +6,7 @@
   },
   "scripts": {
     "setEnv": "export BASE_ADDRESS_API=$npm_package_config_baseAddressAPI",
+    "build": "meteor build ../desafio-hotmart-dragonfly-deploy --server-only",
     "start": "npm install && node env && meteor run --port $npm_package_config_port",
     "prod": "npm install && node env && meteor run --port $npm_package_config_port --production"
   },
