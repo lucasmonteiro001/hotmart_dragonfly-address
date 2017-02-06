@@ -78,8 +78,10 @@ export const DragonflyAddressModel = {
         editPossible: false
     },
     "checkListItems": {
+        id: 'checkListItems',
         editOnly: true,
         type: 'ARRAY',
+        label: 'Checklist',
         editPossible: true,
         fields: [
             {

@@ -6,9 +6,12 @@
  */
 import { Meteor } from 'meteor/meteor';
 import { assert } from 'meteor/practicalmeteor:chai';
-import { DragonflyAddressModel } from './model'
+import { DragonflyAddressModel, DAMGetFormOptions } from './model'
 
 if(Meteor.isAppTest && Meteor.isServer) {
+
+    const properties = ['label', 'zipCode', 'address', 'number', 'neighborhood', 'complement', 'city', 'state',
+        'country', 'checkListItems'];
 
 
     describe('Dragonfly Address Model', function () {
@@ -21,17 +24,13 @@ if(Meteor.isAppTest && Meteor.isServer) {
 
             for(field of Object.keys(DragonflyAddressModel)) {
 
-                for(field of Object.keys(DragonflyAddressModel)) {
+                let result = DragonflyAddressModel[field][property];
 
-                    assert.isNotNull(DragonflyAddressModel[field][property]);
-                }
+                assert.isTrue(result != undefined && result != null, 'property: ' + property + ' - field: ' + field);
             }
         };
 
         it('Contains correct properties only', function (done) {
-
-            let properties = ['label', 'zipCode', 'address', 'number', 'neighborhood', 'complement', 'city', 'state',
-                'country', 'checkListItems'];
 
             for(field of Object.keys(DragonflyAddressModel)) {
 
@@ -67,6 +66,47 @@ if(Meteor.isAppTest && Meteor.isServer) {
             checkForProperty('editPossible');
 
             done();
+        });
+
+        describe('Get form options', function () {
+
+            const checkFieldExists = (field) => {
+
+                if(!field) {
+                    return false;
+                }
+
+                let formOptions = DAMGetFormOptions();
+
+                for(prop of formOptions) {
+                    console.log(field, prop.id);
+                    if(field == prop.id) {
+                        return true;
+                    }
+                }
+
+                return false
+            };
+
+            it('Get options for adding new address', function (done) {
+
+
+                done()
+                let formOptions = DAMGetFormOptions(),
+                    formOptionsKeys = Object.keys(formOptions[0]);
+
+                // console.log(formOptions)
+                // console.log(formOptionsKeys)
+
+                // checks if methods returns all properties
+                for(prop of properties) {
+
+                    // make sure that all properties are returned from the method
+                    assert.isTrue(checkFieldExists(prop));
+                }
+
+                done();
+            })
         });
 
     });
