@@ -31,4 +31,4 @@ Como executar o sistema
  
 - **Testes**: para executar os testes, basta executar o comando ```npm test``` .
     - Para visualizar o resultado dos testes, basta acessar *http://localhost:3000* no seu navegador. 
-- **Obs**: as variáveis de ambiente contém valores sensíveis (como chaves de aplicação). O ideal é que esses valores não seja versionados no repositório. Porém, coloquei as chaves no repositório para não precisar passar um arquivo de configuração separado.
+- **Obs**: as variáveis de ambiente contém valores sensíveis (como chaves de aplicação). O ideal é que esses valores não sejam versionados no repositório. Porém, coloquei as chaves no repositório para não precisar passar um arquivo de configuração separado.
