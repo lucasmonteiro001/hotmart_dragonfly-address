@@ -10,7 +10,7 @@ import { DragonflyAddressModel, DAMGetFormOptions } from './model'
 
 if(Meteor.isAppTest && Meteor.isServer) {
 
-    const properties = ['label', 'zipCode', 'address', 'number', 'neighborhood', 'complement', 'city', 'state',
+    const PROPERTIES = ['label', 'zipCode', 'address', 'number', 'neighborhood', 'complement', 'city', 'state',
         'country', 'checkListItems'];
 
 
@@ -30,11 +30,11 @@ if(Meteor.isAppTest && Meteor.isServer) {
             }
         };
 
-        it('Contains correct properties only', function (done) {
+        it('Contains correct PROPERTIES only', function (done) {
 
             for(field of Object.keys(DragonflyAddressModel)) {
 
-                assert.isTrue(properties.indexOf(field) != -1);
+                assert.isTrue(PROPERTIES.indexOf(field) != -1);
             }
 
             done();
@@ -79,7 +79,6 @@ if(Meteor.isAppTest && Meteor.isServer) {
                 let formOptions = DAMGetFormOptions();
 
                 for(prop of formOptions) {
-                    console.log(field, prop.id);
                     if(field == prop.id) {
                         return true;
                     }
@@ -88,20 +87,12 @@ if(Meteor.isAppTest && Meteor.isServer) {
                 return false
             };
 
-            it('Get options for adding new address', function (done) {
+            it('Get all options for adding a new address', function (done) {
 
+                // checks if methods returns all PROPERTIES
+                for(prop of PROPERTIES) {
 
-                done()
-                let formOptions = DAMGetFormOptions(),
-                    formOptionsKeys = Object.keys(formOptions[0]);
-
-                // console.log(formOptions)
-                // console.log(formOptionsKeys)
-
-                // checks if methods returns all properties
-                for(prop of properties) {
-
-                    // make sure that all properties are returned from the method
+                    // make sure that all PROPERTIES are returned from the method
                     assert.isTrue(checkFieldExists(prop));
                 }
 
