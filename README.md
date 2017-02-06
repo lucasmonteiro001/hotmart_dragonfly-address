@@ -32,3 +32,28 @@ Como executar o sistema
 - **Testes**: para executar os testes, basta executar o comando ```npm test``` .
     - Para visualizar o resultado dos testes, basta acessar *http://localhost:3000* no seu navegador. 
 - **Obs**: as variáveis de ambiente contém valores sensíveis (como chaves de aplicação). O ideal é que esses valores não sejam versionados no repositório. Porém, coloquei as chaves no repositório para não precisar passar um arquivo de configuração separado.
+
+Capturas de tela
+----------------
+
+Tela inicial
+![Tela inicial](https://raw.githubusercontent.com/lucasmonteiro001/dragonfly-address/master/public/img/1.inicio.png)
+
+Tela após login
+![Tela após login](https://raw.githubusercontent.com/lucasmonteiro001/dragonfly-address/master/public/img/2_inicio.png)
+
+Tela aposs clicar em obter endereços
+![Tela aposs clicar em obter endereços](https://raw.githubusercontent.com/lucasmonteiro001/dragonfly-address/master/public/img/3_apos_obter_enderecos.png)
+
+Tela de visualização de endereçoes parte 1
+![Tela de visualização de endereçoes parte 1](https://raw.githubusercontent.com/lucasmonteiro001/dragonfly-address/master/public/img/4_visualizacao.png)
+
+Tela de visualização de endereçoes parte 2
+![Tela de visualização de endereçoes parte 2](https://raw.githubusercontent.com/lucasmonteiro001/dragonfly-address/master/public/img/5_visualizacao.png)
+
+Tela de adicionar novo endereço
+![Tela de adicionar novo endereço](https://raw.githubusercontent.com/lucasmonteiro001/dragonfly-address/master/public/img/6_adicionar_endereco.png)
+
+Tela para mudar configuração de tabela
+![Tela para mudar configuração de tabela](https://raw.githubusercontent.com/lucasmonteiro001/dragonfly-address/master/public/img/7_configuracao_tabela.png)
+
