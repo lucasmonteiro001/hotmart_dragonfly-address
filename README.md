@@ -1,7 +1,5 @@
 Autor: Lucas Pereira Monteiro
 
-Contato: (31) 97303-4518
-
 Email: lucasmonteiro001@gmail.com
 
 DragonFly - Módulo de Endereços
