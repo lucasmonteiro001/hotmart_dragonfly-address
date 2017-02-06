@@ -15,22 +15,20 @@ if(Meteor.isAppTest && Meteor.isServer) {
 
     describe('Location helper', function () {
 
-        it('Get correct latitude and longitude', function (done) {
+        it('Get correct latitude and longitude', function () {
 
-            getLatLng(data.zipCode)
+            return getLatLng(data.zipCode)
                 .then( function ({latitude, longitude}) {
 
                     assert.equal(data.lat, latitude);
 
                     assert.equal(data.lng , longitude);
 
-                    done();
                 })
                 .catch( function (error) {
 
-                    assert.isUndefined(error);
+                    assert.isUndefined(error, 'CEP inválido');
 
-                    done()
                 });
 
         });
