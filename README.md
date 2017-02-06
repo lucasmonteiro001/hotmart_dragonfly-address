@@ -9,6 +9,7 @@ Ambiente em que foram realizados os testes
 --------------------
 - OSX ou Unix
 - Node 4.4.7
+    -   Para installar o Node, acessar https://nodejs.org/en/download/
 - Npm 4.0.0
 - Framework de Desenvolvimento: Meteor 1.4.2.3
     -   Para instalar o Meteor, acessar https://www.meteor.com/install
@@ -17,11 +18,12 @@ Ambiente em que foram realizados os testes
 
 Demonstração de sistema em funcionamento
 ----------------------------------------
-
-Acessar http://bit.ly/implementacao-lucas
+A aplicação também foi hospedada no Digital Ocean, para testar 
+acesse: http://bit.ly/implementacao-lucas
 
 Como executar o sistema
 -----------------------
+- Clonar o projeto e acessar a pasta.
 - **Nota**: para mudar a porta de execução, basta editar o arquivo *package.json* e alterar a variável ```port``` para o novo valor.
 - **Execução**: para executar, basta rodar o comando 
 ```npm start``` . Este comando irá instalar todas as dependências, configurar as variáveis de ambiente e executar o meteor na **Porta 3000**.
