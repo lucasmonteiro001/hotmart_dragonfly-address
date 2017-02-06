@@ -24,7 +24,7 @@ Como executar o sistema
 -----------------------
 - **Execução**: para executar, basta rodar o comando 
 ```npm start``` . Este comando irá instalar todas as dependências, configurar as variáveis de ambiente e executar o meteor na **Porta 3000**.
-    - Para visualizar o sistema em execução, basta acessar *http://localhost:3000* ou *http://localhost:<port>* onde <port> é a porta especificado no arquivo de configuração.
+    - Para visualizar o sistema em execução, basta acessar *http://localhost:3000* ou *http://localhost:[port]* onde [port] é a porta especificado no arquivo de configuração.
 
 - **Nota**: para mudar a porta de execução, basta editar o arquivo *package.json* e alterar a variável ```port``` para o novo valor.
  
