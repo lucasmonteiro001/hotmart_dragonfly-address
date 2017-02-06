@@ -35,3 +35,5 @@ jss:flag-icon
 peppelg:bootstrap-3-modal
 http
 session
+practicalmeteor:mocha
+practicalmeteor:chai
