@@ -10,7 +10,7 @@ const publicRoutes = FlowRouter.group({
 publicRoutes.route( '/', {
     name: 'index',
     action() {
-        console.info('index')
+        document.title = "Dragonfly - Mod. Endereços";
         BlazeLayout.render( 'default', { yield: 'index' } );
     }
 });
